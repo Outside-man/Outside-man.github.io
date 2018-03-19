@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="井蛙不可以语于海者">
+    <meta name="keyword"  content="">
+    <!-- <link rel="shortcut icon" href="/Outside-man.github.io/img/favicon.ico"> -->
+
+    <title>minecraft开服实录 - 语海的博客</title>
+
+    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2017/12/22/minecraft-server/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/Outside-man.github.io/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Outside-man.github.io/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/Outside-man.github.io/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Outside-man.github.io/">语海</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/Outside-man.github.io/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Outside-man.github.io/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/Outside-man.github.io/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/Outside-man.github.io/img/home-bg.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/Outside-man.github.io/img/home-bg.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/Outside-man.github.io/tags/#minecraft" title="minecraft">minecraft</a>
+                        
+                    </div>
+                    <h1>minecraft开服实录</h1>
+                    
+                    
+                    <h2 class="subheading"></h2>
+                    
+                    <span class="meta">Posted by yuhai on December 22, 2017</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+
+                
+                <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h3 id="写在前面">写在前面</h3>
+<p>Minecraft(简称Mc) 是一款从中学一直玩到大学都觉得非常好玩的游戏<br />
+但是以前和小伙伴玩的时候是通过蛤蟆吃或者是本地建服然后端口开放出去。这些方法都是中学的时候一点点看着论坛摸索出来的。之后进了大学就都是在寝室里局域网play。<br />
+这次有机会搞到了一台还不错的ubuntu的服务器，打算在上面建个服，然后放假了大家可以在家里玩。但是再liunx的服务器上，没有图形化界面 开服就没那么容易，就参考着资料试试看。</p>
+
+<hr />
+
+<h3 id="需要材料">需要材料</h3>
+<ol>
+  <li>jdk</li>
+  <li>minecraft_server.jar</li>
+  <li>forge-install.jar</li>
+  <li>forge-universal.jar</li>
+</ol>
+
+<h3 id="搞起以1710为例">搞起(以1.7.10为例)</h3>
+<p>java环境就不多说了。直接创个目录就把上面三个jar丢进去。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -Xmx2048M -Xms2048M -XX:ParallelGCThreads=16 -jar minecraft_server.1.7.10.jar
+</code></pre></div></div>
+<blockquote>
+  <p>-Xmx最大内存 -Xms最小内存 -XX:ParallelGCThreads同时调用CPU数量，建议不设</p>
+</blockquote>
+
+<p>第一次运行的时候 会要求签署EULA文件。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eula=true
+</code></pre></div></div>
+<p>再次运行，这个时候一个<strong>纯净服务器</strong>就开起来了。</p>
+<h4 id="forge">Forge</h4>
+<p>如果没有forge-install.jar、forge-universal.jar那就wget</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.10-10.13.2.1291/forge-1.7.10-10.13.2.1291-installer.jar
+wget http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.10-10.13.2.1291/forge-1.7.10-10.13.2.1291-universal.jar
+
+</code></pre></div></div>
+<p>有了之后就开始安装forge</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar forge-1.7.10-10.13.2.1291-installer.jar nogui --installServer
+</code></pre></div></div>
+<blockquote>
+  <p>同目录下必须有minecraft_server.1.7.10.jar，注意版本号</p>
+</blockquote>
+
+<p>启动forge服务器</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java -jar forge-1.7.10-10.13.2.1291-universal.jar
+</code></pre></div></div>
+<p>可以装mod的服务器就配置好了（撒花</p>
+<blockquote>
+  <p>如果是盗版服的话 修改server.properties 里的 online-mode=false</p>
+</blockquote>
+
+<h4 id="还有一点点">还有一点点</h4>
+<p>这个时候在目录下面有两个jar(forge-install.jar安装完毕后就可以删除了),强迫症不能忍啊，整到一个jar里面</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir tmp
+cd tmp
+tmp ../minecraft_server.1.7.10.jar
+tmp ../forge-1.7.10-10.13.2.1291-universal.jar
+</code></pre></div></div>
+<blockquote>
+  <p>Archive: ../forge-1.7.10-10.13.2.1291-universal.jar <br />
+replace META-INF/MANIFEST.MF? [y]es, [n]o, [A]ll, [N]one, [r]ename: A</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>zip -r ../Forge-minecraft_server.1.7.10.jar *
+</code></pre></div></div>
+<p>这样的话可以就把server和forge里的东西整一块,把tmp文件夹以及之前的jar删除即可。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>完成之后的文件树
+
+tree -L 1
+
+├── banned-ips.json
+├── banned-players.json
+├── config
+├── eula.txt
+├── Forge-minecraft_server.1.7.10.jar
+├── libraries
+├── logs
+├── mods
+├── ops.json
+├── server.properties
+├── usercache.json
+├── whitelist.json
+└── world
+</code></pre></div></div>
+<p>打上mod，开始Mc之旅吧~</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nohup java -Xmx2048M -Xms2048M -XX:ParallelGCThreads=16 -jar minecraft_server.1.7.10.jar &amp;
+</code></pre></div></div>
+
+
+                <hr>
+
+                
+                <!-- 多说 Share start -->
+                </style>
+<!--                 <div class="ds-share"
+                    style="text-align: right"
+                    data-thread-key="/2017/12/22/minecraft-server"
+                    data-title="minecraft开服实录"
+                    data-url="http://localhost:4000/Outside-man.github.io/2017/12/22/minecraft-server/"
+                    data-images="http://localhost:4000/Outside-man.github.io/img/home-bg.jpg"
+                    data-content="写在前面
+Minecraft(简称Mc) 是一款从中学一直玩到大学都觉得非常好玩的游戏
+但是以前和小伙伴玩的时候是通过蛤蟆吃或者是本地建服然后端口开放出去... | 语海的博客 " >
+                    <div class="ds-share-inline">
+                      <ul  class="ds-share-icons-16">
+                        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
+                        <li><a class="ds-wechat flat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+                        <li><a class="ds-weibo flat" href="javascript:void(0);" data-service="weibo">微博</a></li>
+                        <li><a class="ds-douban flat" href="javascript:void(0);" data-service="douban">豆瓣</a></li>
+                      </ul>
+                      <div class="ds-share-icons-more">
+                      </div>
+                    </div>
+                <hr>
+                </div> -->
+                <!-- 多说 Share end-->
+                
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/Outside-man.github.io/2017/12/12/database-backup/" data-toggle="tooltip" data-placement="top" title="在linux系统自动备份数据库">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/Outside-man.github.io/2018/01/02/The-Ex-file/" data-toggle="tooltip" data-placement="top" title="有些人错过了，就是一辈子">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2017/12/22/minecraft-server"
+                        data-title="minecraft开服实录"
+                        data-url="http://localhost:4000/Outside-man.github.io/2017/12/22/minecraft-server/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+                				<a href="/Outside-man.github.io/tags/#生活" title="生活" rel="2">
+                                    生活
+                                </a>
+                            
+        				
+                            
+        				
+                            
+        				
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="http://betahouse.us">betahouse</a></li>
+                    
+                        <li><a href="http://lilikai.tk">LikaiLee</a></li>
+                    
+                        <li><a href="https://coink.wang/">coink</a></li>
+                    
+                        <li><a href="http://sytone.me/">clarkzsd</a></li>
+                    
+                        <li><a href="http://rui0.cn/">Ruilin</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'yuhaiblog';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/clguang-ban-tuan-zi">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/Outside-man">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 语海 2018
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/Outside-man.github.io/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/Outside-man.github.io/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/Outside-man.github.io/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0" /> -->
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
