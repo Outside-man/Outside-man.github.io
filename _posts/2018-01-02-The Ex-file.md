@@ -3,7 +3,7 @@ layout:     post
 title:      "有些人错过了，就是一辈子"
 date:       2018-01-02 12:00:00
 author:     "yuhai"
-header-img: "img/in-post/Ex-file/end.jpg"
+header-img: "img/in-post/2018/Ex-file/end.jpg"
 header-music: "535250515"
 tags:
     - 生活
@@ -28,4 +28,4 @@ __我爱你__，此时的孟云最可能说的是　__对不起__，实在是放
   
 珍惜眼前人，且行且珍惜。有些人错过了，就是一辈子。  
 
-![](/img/in-post/Ex-file/end.jpg)
+![](/img/in-post/2018/Ex-file/end.jpg)

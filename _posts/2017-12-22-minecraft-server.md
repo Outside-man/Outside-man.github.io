@@ -3,6 +3,7 @@ layout:     post
 title:      "minecraft开服实录"
 date:       2017-12-22 12:00:00
 author:     "yuhai"
+header-img: "img/in-post/2018/Minecraft/bg.jpeg"
 tags:
     - minecraft
 ---

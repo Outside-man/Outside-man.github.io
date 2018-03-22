@@ -5,15 +5,122 @@
     <description>井蛙不可以语于海者</description>
     <link>http://localhost:4000/Outside-man.github.io/</link>
     <atom:link href="http://localhost:4000/Outside-man.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 19 Mar 2018 22:53:19 +0800</pubDate>
-    <lastBuildDate>Mon, 19 Mar 2018 22:53:19 +0800</lastBuildDate>
-    <generator>Jekyll v3.6.2</generator>
+    <pubDate>Thu, 22 Mar 2018 20:49:47 +0800</pubDate>
+    <lastBuildDate>Thu, 22 Mar 2018 20:49:47 +0800</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>docker小记</title>
+        <description>&lt;p&gt;因为之前有用过docker，但是每次要配置docker容器的时候，又会忘了常用指令，这篇博文打算好好记录下docker的使用。&lt;/p&gt;
+
+&lt;p&gt;首先先介绍下docker，在我的理解中docker是一个容器，我们开发的应用、依赖和环境都可以打包部署到docker中，然后docker进行打包，之后这个包就可以直接部署到任意一台拥有docker服务的机器上。&lt;br /&gt;
+这为我们解决了环境和依赖的问题，之前开发中遇到的问题&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;-这个应用装到生成环境之后咋报错了呢&lt;br /&gt;
+  -不可能，我开发环境完全ojbk啊&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;-我感觉我需要的环境依赖都配置好，怎么这个demo还是跑不起了呢&lt;br /&gt;
+  -你的xxx是不是没装，你的xxx是不是没配好&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;以上这些问题都会因为docker的存在而解决了，因为配置所需要的环境和依赖都随着应有一起打包了。&lt;/p&gt;
+
+&lt;p&gt;docker中的容器与镜像的概念，他们的关系类似于对象和类，容器通过镜像生成，我们运行的是容器，打包出来的是镜像文件。这两个概念会穿插在整个docker中。&lt;/p&gt;
+
+&lt;p&gt;安装docker就不多说了，直接开始常用指令。&lt;/p&gt;
+&lt;h6 id=&quot;镜像images&quot;&gt;镜像(images)&lt;/h6&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$docker images #列出所有镜像
+# -q 静默模式展示(只列出imageId)
+
+$docker run [参数] [image] [command] #创建并运行容器
+# -d 以守护进程方式运行（后台）
+# -i 以交互模式运行容器，通常与 -t 同时使用
+# -t 为容器重新分配一个伪输入终端，通常与 -i 同时使用
+# -P 将容器内部端口随机映射到主机的高端口
+# -p 将容器内部端口绑定到指定的主机端口
+# --name 给容器命名
+# --restart=[always | on-failure(:n)] #自动重启，错误重启(可以指定次数)
+
+$docker search [image] #在线搜索可下载镜像
+
+$docker pull [image] #下载镜像
+
+$docker tag [imageId] [new REPOSITORY name]:[new TAG] #设置镜像标签
+
+$docker rmi [imageId] #删除镜像
+# -f 强制删除
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.runoob.com/docker/docker-run-command.html&quot;&gt;docker run 更多信息&lt;/a&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;容器contain&quot;&gt;容器(contain)&lt;/h6&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$docker ps #列出正在运行的容器
+# -a 列出所有容器包括已停止的
+# -q 静默模式展示(只列出containId)
+
+$docker port [contain] [port] #查看容器端口映射到主机端口的情况
+
+$docker logs [contain] #可以查看容器内部的标准输出
+
+$docker stop [contain] #停止容器
+
+$docker start [contain] #运行容器
+
+$docker restart [contain] #重启容器
+
+$docker rm [contain] #删除容器(不能删除正在运行的容器)
+#docker kill $(docker ps -a -q) 杀死所有正在运行的容器
+#docker rm $(docker ps -a -q) 删除所有已经停止的容器
+
+$docker exec [参数] [contain] [command] #在容器中执行命令
+# -d 以守护进程方式运行（后台）
+# -i 以交互模式运行容器，通常与 -t 同时使用
+# -t 为容器重新分配一个伪输入终端，通常与 -i 同时使用
+
+$docker attach [contain] #进入容器
+#docker exec -it [contain] /bin/sh 也可以进入容器 前提是容器是运行中的
+
+$docker top [contain] #查看容器中运行的进程
+
+$docker diff [contain] #查看容器中的变化
+
+$docker inspect [contain] #查看容器详细信息（输出为Json）
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;docker-hub&quot;&gt;Docker Hub&lt;/h6&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$docker login #登陆dockerHub
+
+$docker commit -m=&quot;版本信息&quot; --author=&quot;作者&quot; [contain] [REPOSITORY:TAG] #构建镜像
+
+$docker push [REPOSITORY:TAG] #将镜像推到dockerhub
+#REPOSITORY 格式要求 user/repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;构建docker 镜像的常用方法是通过Dockerfile，这个以后有空再填这个坑&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018/Docker/alpine.png&quot; alt=&quot;alpine&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;Alpine 最小的linux镜像&lt;/center&gt;
+
+</description>
+        <pubDate>Thu, 22 Mar 2018 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/Outside-man.github.io/2018/03/22/docker/</link>
+        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2018/03/22/docker/</guid>
+        
+        <category>docker</category>
+        
+        <category>技术</category>
+        
+        
+      </item>
     
       <item>
         <title>为何要仰望星空</title>
         <description>&lt;p&gt;今天朋友圈直接被刷爆了，一颗物理界的巨星霍金逝世了。霍金对于我来说并不是很熟悉，以前初中中二的时候，啃过时间简史，也就是度过，套着里面一些生涩难懂的词汇，和初中的小伙伴侃侃大山。当我得知霍金逝世的时候，内心中还是怀着一定的伤感，白驹过隙，霍金致力于研究时间的，穷极一生证明时间的起点，到最后也还是阻挡不了时间无情地碾过。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/Hwaking/hwaking.jpg&quot; alt=&quot;Hwaking&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018/Hwaking/hwaking.jpg&quot; alt=&quot;Hwaking&quot; /&gt;&lt;/p&gt;
 &lt;center&gt;霍金&lt;/center&gt;
 
 &lt;p&gt;仔细了解霍金是从《万物理论》里面知道了霍金的人生，他这一生都被上帝玩弄着，有着极高的天赋和思想，却在早年就患上了肌肉萎缩的绝症，到后患肺炎，手术后他失去了说话的能力。他失去行动能力，甚至没有可以表达的能力。但是这一切都没有停止他的思维，只要大脑还能运作，思想就永无止步。&lt;/p&gt;
@@ -37,6 +144,54 @@
       </item>
     
       <item>
+        <title>一次Redis被攻击的体验</title>
+        <description>&lt;p&gt;今天本来高高兴兴地在开发项目，当我打开redis远程管理的时候突然发现，数据库中多了两条奇怪的数据。
+&lt;img src=&quot;/img/in-post/2018/Redis-Attack/n1.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;n1&lt;/center&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018/Redis-Attack/n2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;n2&lt;/center&gt;
+
+&lt;p&gt;我当时就发现这个ip我不认识啊，而且这个明显是cron的定时脚本，我心想不会是我开发的时候不小心把一些什么奇奇怪怪的东西写到redis里了吧。但是我的项目缓存没有持久的，这个TTL:-1让我觉得十分奇怪。&lt;/p&gt;
+
+&lt;p&gt;抱着好奇，我把这个ip查一了一下 是加拿大的服务器。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018/Redis-Attack/ip.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;百度结果&lt;/center&gt;
+
+&lt;p&gt;我心想我一个阿里云的学生服务器，我也没往墙外走过，这个肯定不是我主动造成。接着我尝试直接访问这个地址，看到的结果令我大吃一惊。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018/Redis-Attack/db.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;db.php&lt;/center&gt;
+&lt;p&gt;这是shell脚本啊，我被攻击了。&lt;/p&gt;
+
+&lt;p&gt;一直听闻网络黑客神乎其神，但是长在红旗下的我还真没怎么一对一遇到过黑客攻击，这一波我要仔细瞅瞅。问了一下专攻安全的学弟，才知道这个黑客的手段。&lt;/p&gt;
+
+&lt;p&gt;大概攻击手段如下&lt;/p&gt;
+
+&lt;p&gt;由于弱口令进入redis
+本地生成公私钥文件，把公钥文件通过redis &amp;gt;config set 注到我的服务器中
+通过本地私钥 ssh –i id_rsa root@xxx.xxx.xx.xx 直接获取服务器
+不重视网络安全，活该被攻击，还好这台服务器只是我测试用的，最后解决办法，找到这段rsa删除，redis密码加强。仔细分析代码还被执行了”sr0.db”脚本，有可能是后门脚本。以后只能悠着点了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018/Redis-Attack/bqb.jpg&quot; alt=&quot;&quot; /&gt;
+技术参考：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.knownsec.com/2015/11/analysis-of-redis-unauthorized-of-expolit/&quot;&gt;Redis 未授权访问配合 SSH key 文件利用分析&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 05 Mar 2018 20:00:00 +0800</pubDate>
+        <link>http://localhost:4000/Outside-man.github.io/2018/03/05/Redis-Attack/</link>
+        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2018/03/05/Redis-Attack/</guid>
+        
+        <category>网络安全</category>
+        
+        <category>服务器</category>
+        
+        <category>Redis</category>
+        
+        
+      </item>
+    
+      <item>
         <title>有些人错过了，就是一辈子</title>
         <description>&lt;p&gt;今天看完《前任3》，影片开始还在吐槽剧情，看似分手，实则塞了观众满嘴口粮。一开场的，林佳来回进出房间，孟云在客厅坐立不安。发生的一切都好像是在说，这只是小打小闹，最终一定会和好的。&lt;/p&gt;
 
@@ -53,7 +208,7 @@
 
 &lt;p&gt;珍惜眼前人，且行且珍惜。有些人错过了，就是一辈子。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/img/in-post/Ex-file/end.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/in-post/2018/Ex-file/end.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 02 Jan 2018 20:00:00 +0800</pubDate>
         <link>http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/</link>
@@ -251,6 +406,8 @@ password='password'
         <category>服务器</category>
         
         <category>Linux</category>
+        
+        <category>技术</category>
         
         
       </item>

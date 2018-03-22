@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <!-- <link rel="shortcut icon" href="/Outside-man.github.io/img/favicon.ico"> -->
 
-    <title>有些人错过了，就是一辈子 - 语海的博客</title>
+    <title>docker小记 - 语海的博客</title>
 
-    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/">
+    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/03/22/docker/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/Outside-man.github.io/css/bootstrap.min.css">
@@ -125,12 +125,12 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg" width="0" height="0"> -->
+<!-- <img src="/Outside-man.github.io/img/in-post/2018/Docker/bg.jpeg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg')
+        background-image: url('/Outside-man.github.io/img/in-post/2018/Docker/bg.jpeg')
     }
 </style>
 <header class="intro-header" >
@@ -140,19 +140,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#生活" title="生活">生活</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#docker" title="docker">docker</a>
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#影评" title="影评">影评</a>
-                        
-                        <a class="tag" href="/Outside-man.github.io/tags/#前任3：再见前任" title="前任3：再见前任">前任3：再见前任</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#技术" title="技术">技术</a>
                         
                     </div>
-                    <h1>有些人错过了，就是一辈子</h1>
+                    <h1>docker小记</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by yuhai on January 2, 2018</span>
+                    <span class="meta">Posted by yuhai on March 22, 2018</span>
                 </div>
             </div>
         </div>
@@ -167,32 +165,104 @@
     <!-- Post Container -->
 
                 
-                <iframe  class="
-                col-lg-4 col-lg-offset-4
-                col-md-10 col-md-offset-1
-                post-container" frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=535250515&auto=0&height=32"></iframe>
-                
                 <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>今天看完《前任3》，影片开始还在吐槽剧情，看似分手，实则塞了观众满嘴口粮。一开场的，林佳来回进出房间，孟云在客厅坐立不安。发生的一切都好像是在说，这只是小打小闹，最终一定会和好的。</p>
+				<p>因为之前有用过docker，但是每次要配置docker容器的时候，又会忘了常用指令，这篇博文打算好好记录下docker的使用。</p>
 
-<p>王鑫，王梓的出现为最后的无法挽回打下了伏笔。作为观众能理解是误会，剧中的男女主却越走越远。</p>
+<p>首先先介绍下docker，在我的理解中docker是一个容器，我们开发的应用、依赖和环境都可以打包部署到docker中，然后docker进行打包，之后这个包就可以直接部署到任意一台拥有docker服务的机器上。<br />
+这为我们解决了环境和依赖的问题，之前开发中遇到的问题</p>
+<blockquote>
+  <p>-这个应用装到生成环境之后咋报错了呢<br />
+  -不可能，我开发环境完全ojbk啊</p>
+</blockquote>
 
-<p>在王梓知道孟云还想着林佳，把自己当做的替代品，却仍希望孟云能挽留自己。希望孟云能说出　
-<strong>我爱你</strong>，此时的孟云最可能说的是　<strong>对不起</strong>，实在是放不下林佳。而林佳线中，面对王鑫的无限温柔之下，她一开始也是无法放下孟云。影片一直给观众呈现的感觉就是最终他们一定能复合。</p>
+<blockquote>
+  <p>-我感觉我需要的环境依赖都配置好，怎么这个demo还是跑不起了呢<br />
+  -你的xxx是不是没装，你的xxx是不是没配好</p>
+</blockquote>
 
-<p>剧中有无数次可以复合的机会，一次次的失去。早些时候年轻的时候想着的是怎么这么矫情，现在渐渐也能感受到造物弄人的感觉。最终一对5年的恋人分开了，林佳最终再见的方式是狂吃会过敏的芒果，孟云则是穿上至尊宝站在城市街头。一段感情从此彻底断开，这突然起来的，真的是令人心里堵着。多希望其实影片还有5分钟，这一切都能复合。</p>
+<p>以上这些问题都会因为docker的存在而解决了，因为配置所需要的环境和依赖都随着应有一起打包了。</p>
 
-<p>男女主错了吗？他们中没有人错，感情的事情没有对与错。热恋的时候永远不知道会因为什么分开，走着走着可能就分开了。就像剧中，开始问为什么分手，记不清了。却一直一直放不下，但也一直一直无法复合。</p>
+<p>docker中的容器与镜像的概念，他们的关系类似于对象和类，容器通过镜像生成，我们运行的是容器，打包出来的是镜像文件。这两个概念会穿插在整个docker中。</p>
 
-<p>整部剧表现形式虽然夸张，但是分手之后的那种情绪波动，非常能引起观众的共鸣。自己何尝也不是在经历一段感情之后，久久走不出来呢。或许是1个月或许是1年，或许是更久。</p>
+<p>安装docker就不多说了，直接开始常用指令。</p>
+<h6 id="镜像images">镜像(images)</h6>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$docker images #列出所有镜像
+# -q 静默模式展示(只列出imageId)
 
-<p>珍惜眼前人，且行且珍惜。有些人错过了，就是一辈子。</p>
+$docker run [参数] [image] [command] #创建并运行容器
+# -d 以守护进程方式运行（后台）
+# -i 以交互模式运行容器，通常与 -t 同时使用
+# -t 为容器重新分配一个伪输入终端，通常与 -i 同时使用
+# -P 将容器内部端口随机映射到主机的高端口
+# -p 将容器内部端口绑定到指定的主机端口
+# --name 给容器命名
+# --restart=[always | on-failure(:n)] #自动重启，错误重启(可以指定次数)
 
-<p><img src="/img/in-post/2018/Ex-file/end.jpg" alt="" /></p>
+$docker search [image] #在线搜索可下载镜像
+
+$docker pull [image] #下载镜像
+
+$docker tag [imageId] [new REPOSITORY name]:[new TAG] #设置镜像标签
+
+$docker rmi [imageId] #删除镜像
+# -f 强制删除
+</code></pre></div></div>
+
+<p><a href="http://www.runoob.com/docker/docker-run-command.html">docker run 更多信息</a></p>
+
+<h6 id="容器contain">容器(contain)</h6>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$docker ps #列出正在运行的容器
+# -a 列出所有容器包括已停止的
+# -q 静默模式展示(只列出containId)
+
+$docker port [contain] [port] #查看容器端口映射到主机端口的情况
+
+$docker logs [contain] #可以查看容器内部的标准输出
+
+$docker stop [contain] #停止容器
+
+$docker start [contain] #运行容器
+
+$docker restart [contain] #重启容器
+
+$docker rm [contain] #删除容器(不能删除正在运行的容器)
+#docker kill $(docker ps -a -q) 杀死所有正在运行的容器
+#docker rm $(docker ps -a -q) 删除所有已经停止的容器
+
+$docker exec [参数] [contain] [command] #在容器中执行命令
+# -d 以守护进程方式运行（后台）
+# -i 以交互模式运行容器，通常与 -t 同时使用
+# -t 为容器重新分配一个伪输入终端，通常与 -i 同时使用
+
+$docker attach [contain] #进入容器
+#docker exec -it [contain] /bin/sh 也可以进入容器 前提是容器是运行中的
+
+$docker top [contain] #查看容器中运行的进程
+
+$docker diff [contain] #查看容器中的变化
+
+$docker inspect [contain] #查看容器详细信息（输出为Json）
+
+</code></pre></div></div>
+
+<h6 id="docker-hub">Docker Hub</h6>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$docker login #登陆dockerHub
+
+$docker commit -m="版本信息" --author="作者" [contain] [REPOSITORY:TAG] #构建镜像
+
+$docker push [REPOSITORY:TAG] #将镜像推到dockerhub
+#REPOSITORY 格式要求 user/repo
+</code></pre></div></div>
+
+<p>构建docker 镜像的常用方法是通过Dockerfile，这个以后有空再填这个坑</p>
+
+<p><img src="/img/in-post/2018/Docker/alpine.png" alt="alpine" /></p>
+<center>Alpine 最小的linux镜像</center>
+
 
 
                 <hr>
@@ -202,11 +272,13 @@
                 </style>
 <!--                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2018/01/02/The Ex-file"
-                    data-title="有些人错过了，就是一辈子"
-                    data-url="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/"
-                    data-images="http://localhost:4000/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg"
-                    data-content="今天看完《前任3》，影片开始还在吐槽剧情，看似分手，实则塞了观众满嘴口粮。一开场的，林佳来回进出房间，孟云在客厅坐立不安。发生的一切都好像是在说，这只是小... | 语海的博客 " >
+                    data-thread-key="/2018/03/22/docker"
+                    data-title="docker小记"
+                    data-url="http://localhost:4000/Outside-man.github.io/2018/03/22/docker/"
+                    data-images="http://localhost:4000/Outside-man.github.io/img/in-post/2018/Docker/bg.jpeg"
+                    data-content="因为之前有用过docker，但是每次要配置docker容器的时候，又会忘了常用指令，这篇博文打算好好记录下docker的使用。
+
+首先先介绍下docker... | 语海的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -226,13 +298,9 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/Outside-man.github.io/2017/12/22/minecraft-server/" data-toggle="tooltip" data-placement="top" title="minecraft开服实录">&larr; Previous Post</a>
+                        <a href="/Outside-man.github.io/2018/03/14/Hawking/" data-toggle="tooltip" data-placement="top" title="为何要仰望星空">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/Outside-man.github.io/2018/03/05/Redis-Attack/" data-toggle="tooltip" data-placement="top" title="一次Redis被攻击的体验">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
@@ -241,9 +309,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2018/01/02/The Ex-file"
-                        data-title="有些人错过了，就是一辈子"
-                        data-url="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/" >
+                        data-thread-key="/2018/03/22/docker"
+                        data-title="docker小记"
+                        data-url="http://localhost:4000/Outside-man.github.io/2018/03/22/docker/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

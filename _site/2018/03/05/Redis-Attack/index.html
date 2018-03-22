@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <!-- <link rel="shortcut icon" href="/Outside-man.github.io/img/favicon.ico"> -->
 
-    <title>有些人错过了，就是一辈子 - 语海的博客</title>
+    <title>一次Redis被攻击的体验 - 语海的博客</title>
 
-    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/">
+    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/03/05/Redis-Attack/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/Outside-man.github.io/css/bootstrap.min.css">
@@ -125,12 +125,12 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg" width="0" height="0"> -->
+<!-- <img src="/Outside-man.github.io/img/in-post/2018/Redis-Attack/bg.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg')
+        background-image: url('/Outside-man.github.io/img/in-post/2018/Redis-Attack/bg.jpg')
     }
 </style>
 <header class="intro-header" >
@@ -140,19 +140,19 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#生活" title="生活">生活</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#网络安全" title="网络安全">网络安全</a>
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#影评" title="影评">影评</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#服务器" title="服务器">服务器</a>
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#前任3：再见前任" title="前任3：再见前任">前任3：再见前任</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#Redis" title="Redis">Redis</a>
                         
                     </div>
-                    <h1>有些人错过了，就是一辈子</h1>
+                    <h1>一次Redis被攻击的体验</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by yuhai on January 2, 2018</span>
+                    <span class="meta">Posted by yuhai on March 5, 2018</span>
                 </div>
             </div>
         </div>
@@ -167,32 +167,43 @@
     <!-- Post Container -->
 
                 
-                <iframe  class="
-                col-lg-4 col-lg-offset-4
-                col-md-10 col-md-offset-1
-                post-container" frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=535250515&auto=0&height=32"></iframe>
-                
                 <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>今天看完《前任3》，影片开始还在吐槽剧情，看似分手，实则塞了观众满嘴口粮。一开场的，林佳来回进出房间，孟云在客厅坐立不安。发生的一切都好像是在说，这只是小打小闹，最终一定会和好的。</p>
+				<p>今天本来高高兴兴地在开发项目，当我打开redis远程管理的时候突然发现，数据库中多了两条奇怪的数据。
+<img src="/img/in-post/2018/Redis-Attack/n1.jpg" alt="" /></p>
+<center>n1</center>
+<p><img src="/img/in-post/2018/Redis-Attack/n2.jpg" alt="" /></p>
+<center>n2</center>
 
-<p>王鑫，王梓的出现为最后的无法挽回打下了伏笔。作为观众能理解是误会，剧中的男女主却越走越远。</p>
+<p>我当时就发现这个ip我不认识啊，而且这个明显是cron的定时脚本，我心想不会是我开发的时候不小心把一些什么奇奇怪怪的东西写到redis里了吧。但是我的项目缓存没有持久的，这个TTL:-1让我觉得十分奇怪。</p>
 
-<p>在王梓知道孟云还想着林佳，把自己当做的替代品，却仍希望孟云能挽留自己。希望孟云能说出　
-<strong>我爱你</strong>，此时的孟云最可能说的是　<strong>对不起</strong>，实在是放不下林佳。而林佳线中，面对王鑫的无限温柔之下，她一开始也是无法放下孟云。影片一直给观众呈现的感觉就是最终他们一定能复合。</p>
+<p>抱着好奇，我把这个ip查一了一下 是加拿大的服务器。</p>
 
-<p>剧中有无数次可以复合的机会，一次次的失去。早些时候年轻的时候想着的是怎么这么矫情，现在渐渐也能感受到造物弄人的感觉。最终一对5年的恋人分开了，林佳最终再见的方式是狂吃会过敏的芒果，孟云则是穿上至尊宝站在城市街头。一段感情从此彻底断开，这突然起来的，真的是令人心里堵着。多希望其实影片还有5分钟，这一切都能复合。</p>
+<p><img src="/img/in-post/2018/Redis-Attack/ip.jpg" alt="" /></p>
+<center>百度结果</center>
 
-<p>男女主错了吗？他们中没有人错，感情的事情没有对与错。热恋的时候永远不知道会因为什么分开，走着走着可能就分开了。就像剧中，开始问为什么分手，记不清了。却一直一直放不下，但也一直一直无法复合。</p>
+<p>我心想我一个阿里云的学生服务器，我也没往墙外走过，这个肯定不是我主动造成。接着我尝试直接访问这个地址，看到的结果令我大吃一惊。</p>
 
-<p>整部剧表现形式虽然夸张，但是分手之后的那种情绪波动，非常能引起观众的共鸣。自己何尝也不是在经历一段感情之后，久久走不出来呢。或许是1个月或许是1年，或许是更久。</p>
+<p><img src="/img/in-post/2018/Redis-Attack/db.jpg" alt="" /></p>
+<center>db.php</center>
+<p>这是shell脚本啊，我被攻击了。</p>
 
-<p>珍惜眼前人，且行且珍惜。有些人错过了，就是一辈子。</p>
+<p>一直听闻网络黑客神乎其神，但是长在红旗下的我还真没怎么一对一遇到过黑客攻击，这一波我要仔细瞅瞅。问了一下专攻安全的学弟，才知道这个黑客的手段。</p>
 
-<p><img src="/img/in-post/2018/Ex-file/end.jpg" alt="" /></p>
+<p>大概攻击手段如下</p>
+
+<p>由于弱口令进入redis
+本地生成公私钥文件，把公钥文件通过redis &gt;config set 注到我的服务器中
+通过本地私钥 ssh –i id_rsa root@xxx.xxx.xx.xx 直接获取服务器
+不重视网络安全，活该被攻击，还好这台服务器只是我测试用的，最后解决办法，找到这段rsa删除，redis密码加强。仔细分析代码还被执行了”sr0.db”脚本，有可能是后门脚本。以后只能悠着点了。</p>
+
+<p><img src="/img/in-post/2018/Redis-Attack/bqb.jpg" alt="" />
+技术参考：</p>
+
+<p><a href="http://blog.knownsec.com/2015/11/analysis-of-redis-unauthorized-of-expolit/">Redis 未授权访问配合 SSH key 文件利用分析</a></p>
 
 
                 <hr>
@@ -202,11 +213,17 @@
                 </style>
 <!--                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2018/01/02/The Ex-file"
-                    data-title="有些人错过了，就是一辈子"
-                    data-url="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/"
-                    data-images="http://localhost:4000/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg"
-                    data-content="今天看完《前任3》，影片开始还在吐槽剧情，看似分手，实则塞了观众满嘴口粮。一开场的，林佳来回进出房间，孟云在客厅坐立不安。发生的一切都好像是在说，这只是小... | 语海的博客 " >
+                    data-thread-key="/2018/03/05/Redis-Attack"
+                    data-title="一次Redis被攻击的体验"
+                    data-url="http://localhost:4000/Outside-man.github.io/2018/03/05/Redis-Attack/"
+                    data-images="http://localhost:4000/Outside-man.github.io/img/in-post/2018/Redis-Attack/bg.jpg"
+                    data-content="今天本来高高兴兴地在开发项目，当我打开redis远程管理的时候突然发现，数据库中多了两条奇怪的数据。
+
+n1
+
+n2
+
+我当时就发现这个ip我不认识啊，而... | 语海的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -226,12 +243,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/Outside-man.github.io/2017/12/22/minecraft-server/" data-toggle="tooltip" data-placement="top" title="minecraft开服实录">&larr; Previous Post</a>
+                        <a href="/Outside-man.github.io/2018/01/02/The-Ex-file/" data-toggle="tooltip" data-placement="top" title="有些人错过了，就是一辈子">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/Outside-man.github.io/2018/03/05/Redis-Attack/" data-toggle="tooltip" data-placement="top" title="一次Redis被攻击的体验">Next Post &rarr;</a>
+                        <a href="/Outside-man.github.io/2018/03/14/Hawking/" data-toggle="tooltip" data-placement="top" title="为何要仰望星空">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -241,9 +258,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2018/01/02/The Ex-file"
-                        data-title="有些人错过了，就是一辈子"
-                        data-url="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/" >
+                        data-thread-key="/2018/03/05/Redis-Attack"
+                        data-title="一次Redis被攻击的体验"
+                        data-url="http://localhost:4000/Outside-man.github.io/2018/03/05/Redis-Attack/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->

@@ -6,6 +6,7 @@ author:     "yuhai"
 tags:
     - 服务器
     - Linux
+    - 技术
 ---
 
 ### 背景交代
