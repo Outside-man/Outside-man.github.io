@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <!-- <link rel="shortcut icon" href="/Outside-man.github.io/img/favicon.ico"> -->
 
-    <title>在linux系统自动备份数据库 - 语海的博客</title>
+    <title>D2·乘风 - 语海的博客</title>
 
-    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2017/12/12/database-backup/">
+    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/03/18/D2-developer/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/Outside-man.github.io/css/bootstrap.min.css">
@@ -125,12 +125,12 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/Outside-man.github.io/img/home-bg.jpeg" width="0" height="0"> -->
+<!-- <img src="/Outside-man.github.io/img/in-post/2018/D2-Developer/bg.jpeg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/Outside-man.github.io/img/home-bg.jpeg')
+        background-image: url('/Outside-man.github.io/img/in-post/2018/D2-Developer/bg.jpeg')
     }
 </style>
 <header class="intro-header" >
@@ -140,19 +140,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#服务器" title="服务器">服务器</a>
-                        
-                        <a class="tag" href="/Outside-man.github.io/tags/#Linux" title="Linux">Linux</a>
-                        
                         <a class="tag" href="/Outside-man.github.io/tags/#技术" title="技术">技术</a>
                         
                     </div>
-                    <h1>在linux系统自动备份数据库</h1>
+                    <h1>D2·乘风</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by yuhai on December 12, 2017</span>
+                    <span class="meta">Posted by yuhai on March 18, 2018</span>
                 </div>
             </div>
         </div>
@@ -172,77 +168,32 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h3 id="背景交代">背景交代</h3>
-<p>在给学校做一些项目的时候，会遇到学校工作人员误操作，导致数据库数据损坏。这时候我想阿里云的服务器肯定有mysql服务器的备份功能，然而要钱。<br />
-我就想自己实现自动备份<br />
-其实就是把备份命令写下来然后定时执行就行了。</p>
-<h5 id="步骤">步骤</h5>
-<ol>
-  <li>安装crontabs</li>
-  <li>写好sh文件</li>
-  <li>创建定时任务</li>
-</ol>
+				<p>去年没去成阿里的 <strong>初心·D2前端开发者大会</strong>，想来可能是我的参会理由的问题，写自己是后端，是学习前端技能，可能被人认为是非前端不适合参会吧。今年这次报名写了自己投了阿里，想了解下阿里技术文化，然后就很顺利当天晚上就收到回复短信了。</p>
 
-<hr />
+<p>带着β-house的学弟一起去了阿里西溪园区，听去年去的学弟说，初心那场有好几个展厅，这次只有一个展厅。诶 去年没去成还是遗憾啊。</p>
 
-<h2 id="尝试开始">尝试开始</h2>
-<h3 id="1-crontabs">1. crontabs</h3>
+<p><img src="/img/in-post/2018/D2-Developer/Alibaba.jpg" alt="阿里西溪园区" /></p>
+<center>阿里西溪园区</center>
 
-<p>学校用了新的服务器 很多没有配置</p>
+<p>到了签到处，居然遇到了第三届工作室的学姐，学姐真的很漂亮。也遇到了其他三个学长，哇 各个都是人才，说话又好听。还蹭了一顿学长们的午饭，爽到。
+<img src="/img/in-post/2018/D2-Developer/betahouse.jpg" alt="学姐" /></p>
+<center>我们与学姐 左二是我:)</center>
+<p><img src="/img/in-post/2018/D2-Developer/senior.jpg" alt="学长学姐们" /></p>
+<center>学长学姐们</center>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get install cron
-</code></pre></div></div>
-<p>惊奇发现 阿里云已经有了crontabs</p>
+<p>这次开发者大会，真的是完全 <em>to D</em>的，从钉钉，到支付宝小程序开发，淘宝无线店ISV，阿里云的前端监控等等。</p>
+
+<p>最让我感兴趣的是DataV的数据可视化，茶歇的时候和展台的人沟通了，因为之前有项目里使用过百度的Echarts，DataV在我的理解中是有点集众家之长，他作为一个包容性的框架，可以支持各种可视图表，开发部署更快。最亮眼的是他支持市场，开发者可以自行整合或者开发出一套可视化框架，放到DataV的市场中，可以供其他开发者使用。因为之前做过停车场可视化项目，会出现前端性能吃紧，就这个我也和展台小姐姐私下聊了下，她说基本能吃的下这样的数据变化的。
+<img src="/img/in-post/2018/D2-Developer/DataV.png" alt="DataV" /></p>
+<center>DataV</center>
+
+<p>这一天的开发者大会下来，最大的感受就是自己能力还远远不够，同时发现了之前的学长学姐们是那么厉害，自己已经大三的如果还这样慢慢学，肯定是要跟不上了。还有一种感觉就是前端真的好有意思，打算开始学习一个前端。</p>
+
+<p>也是今天确定了自己的花名 —— <strong>语海</strong>。
+一直呆在大学象牙塔里面，感觉自己能独立搞点玩具项目，自我感觉还可以，来到D2，看到了自己的前辈们，才发现自己真的是大学里的井底之蛙。井底之蛙不可语之海者，我要走出自己的井，看看大世界，成为能语海的人。</p>
 <blockquote>
-  <p>cron is already the newest version (3.0pl1-128ubuntu2).</p>
+  <p>乘风，乘风快哉</p>
 </blockquote>
-
-<h3 id="2-sh文件">2. sh文件</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>backupdir=/home/backup/backup
-#定义变量backupdir  备份数据之后放到哪里
-
-time='date +%Y%m%d%H'
-#定义时间变量
-
-mysqldump 数据库名 &gt; $backupdir/备份名_$(date +%Y_%m_%d_%H%M%S).sql
-#通过mysqldump指令指定数据库备份，通过管道备份为backupdir下的 以备份名_时间命名的.sql文件
-
-find $backupdir -name "sztw_*.sql" -type f -mtime +30 -exec rm {}\; &gt; /dev/null 2&gt;&amp;1
-#find $backupdir -name "sztw_*.sql" -type f -mtime +30 -exec rm {}\;
-#找到打包文件夹下面的备份文件 类型普通文件，时间超过30日的删除
-#&gt; /dev/null 2&gt;&amp;1 
-#这个是让如果有输出指令不要打印
-</code></pre></div></div>
-<p>写完sh 别忘了把文件权限为可执行chmod u+x xxxxx.sh<br />
-然后尝试 ./xxxxx.sh 执行一发</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vim /etc/mysql/my.cnf
-#里的末尾添加
-[mysqldump]
-user='username'
-password='password'
-#这样就可以在备份的时候自动登入数据库账号
-</code></pre></div></div>
-<h3 id="3创建定时任务">3.创建定时任务</h3>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>crontab -e
-
-#进入到任务编辑文件 添加任务
-0 0 * * * /xxxxx.sh  #所在文件
-#表示每天的0:00执行sh
-</code></pre></div></div>
-<p>crontab 中前面五个值分别表示分钟、小时、几号、月份、周几<br />
-(*)表示所有可能<br />
-(,)逗号隔开几个表示列表范围 如1,3,5<br />
-(-)表示整数范围 如2-6<br />
-(/)表示时间频率 0-23/2 每两小时一次 */10每十分钟一次</p>
-
-<p>完成后重启下crontabs服务</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service cron restart
-</code></pre></div></div>
-
-<p>到此大功告成</p>
 
 
                 <hr>
@@ -252,13 +203,11 @@ password='password'
                 </style>
 <!--                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2017/12/12/database-backup"
-                    data-title="在linux系统自动备份数据库"
-                    data-url="http://localhost:4000/Outside-man.github.io/2017/12/12/database-backup/"
-                    data-images="http://localhost:4000/Outside-man.github.io/img/home-bg.jpeg"
-                    data-content="背景交代
-在给学校做一些项目的时候，会遇到学校工作人员误操作，导致数据库数据损坏。这时候我想阿里云的服务器肯定有mysql服务器的备份功能，然而要钱。
-我... | 语海的博客 " >
+                    data-thread-key="/2018/03/18/D2-developer"
+                    data-title="D2·乘风"
+                    data-url="http://localhost:4000/Outside-man.github.io/2018/03/18/D2-developer/"
+                    data-images="http://localhost:4000/Outside-man.github.io/img/in-post/2018/D2-Developer/bg.jpeg"
+                    data-content="去年没去成阿里的 初心·D2前端开发者大会，想来可能是我的参会理由的问题，写自己是后端，是学习前端技能，可能被人认为是非前端不适合参会吧。今年这次报名写了... | 语海的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -277,9 +226,13 @@ password='password'
 
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/Outside-man.github.io/2018/03/14/Hawking/" data-toggle="tooltip" data-placement="top" title="为何要仰望星空">&larr; Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/Outside-man.github.io/2017/12/22/minecraft-server/" data-toggle="tooltip" data-placement="top" title="minecraft开服实录">Next Post &rarr;</a>
+                        <a href="/Outside-man.github.io/2018/03/22/docker/" data-toggle="tooltip" data-placement="top" title="docker小记">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -289,9 +242,9 @@ password='password'
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2017/12/12/database-backup"
-                        data-title="在linux系统自动备份数据库"
-                        data-url="http://localhost:4000/Outside-man.github.io/2017/12/12/database-backup/" >
+                        data-thread-key="/2018/03/18/D2-developer"
+                        data-title="D2·乘风"
+                        data-url="http://localhost:4000/Outside-man.github.io/2018/03/18/D2-developer/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
