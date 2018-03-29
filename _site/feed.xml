@@ -5,8 +5,8 @@
     <description>井蛙不可以语于海者</description>
     <link>http://localhost:4000/Outside-man.github.io/</link>
     <atom:link href="http://localhost:4000/Outside-man.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 30 Mar 2018 00:54:58 +0800</pubDate>
-    <lastBuildDate>Fri, 30 Mar 2018 00:54:58 +0800</lastBuildDate>
+    <pubDate>Fri, 30 Mar 2018 01:32:55 +0800</pubDate>
+    <lastBuildDate>Fri, 30 Mar 2018 01:32:55 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
@@ -127,7 +127,7 @@ sql分表，语句优化，对于常用的数据进行建立索引，建立视�
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;如何实现乐观锁？&lt;/strong&gt;&lt;br /&gt;
-通过轻量锁来实现乐观锁，具体实现将不出来，面试官提示我wash关键字，但是我依旧没有答出来。&lt;/p&gt;
+通过轻量锁来实现乐观锁，具体实现将不出来，面试官提示我，但是我依旧没有答出来。&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Spring怎么理解的？&lt;/strong&gt;&lt;br /&gt;
 Spring最常说的就是实现了IOC，控制反转和依赖注入。就是将构建对象的工作交给了容器，开发的时候可以通过xml配置，java配置，注解配置来解决。同时Spring做到了集合了很多常用的框架，对框架支持度很高。
