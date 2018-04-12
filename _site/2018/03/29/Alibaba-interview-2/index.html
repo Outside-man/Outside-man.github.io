@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <!-- <link rel="shortcut icon" href="/Outside-man.github.io/img/favicon.ico"> -->
 
-    <title>有些人错过了，就是一辈子 - 语海的博客</title>
+    <title>阿里校招 二面面经 - 语海的博客</title>
 
-    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/">
+    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/Outside-man.github.io/css/bootstrap.min.css">
@@ -125,12 +125,12 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg" width="0" height="0"> -->
+<!-- <img src="/Outside-man.github.io/img/home-bg.jpeg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg')
+        background-image: url('/Outside-man.github.io/img/home-bg.jpeg')
     }
 </style>
 <header class="intro-header" >
@@ -142,17 +142,15 @@
                         
                         <a class="tag" href="/Outside-man.github.io/tags/#生活" title="生活">生活</a>
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#影评" title="影评">影评</a>
-                        
-                        <a class="tag" href="/Outside-man.github.io/tags/#前任3：再见前任" title="前任3：再见前任">前任3：再见前任</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#技术" title="技术">技术</a>
                         
                     </div>
-                    <h1>有些人错过了，就是一辈子</h1>
+                    <h1>阿里校招 二面面经</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by yuhai on January 2, 2018</span>
+                    <span class="meta">Posted by yuhai on March 29, 2018</span>
                 </div>
             </div>
         </div>
@@ -167,32 +165,128 @@
     <!-- Post Container -->
 
                 
-                <iframe  class="
-                col-lg-4 col-lg-offset-4
-                col-md-10 col-md-offset-1
-                post-container" frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=535250515&auto=0&height=32"></iframe>
-                
                 <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>今天看完《前任3》，影片开始还在吐槽剧情，看似分手，实则塞了观众满嘴口粮。一开场的，林佳来回进出房间，孟云在客厅坐立不安。发生的一切都好像是在说，这只是小打小闹，最终一定会和好的。</p>
+				<p>在经历完一面，一轮在线编程，就等着二面了。当我已经躺在床上准备刷刷知乎就打算睡觉的时候，突然一个陌生的电话打来。我警觉的意识到，这个应该就是阿里二面的电话，瞬间坐起跑到阳台接起电话，果然就是二面面试。</p>
 
-<p>王鑫，王梓的出现为最后的无法挽回打下了伏笔。作为观众能理解是误会，剧中的男女主却越走越远。</p>
+<hr />
 
-<p>在王梓知道孟云还想着林佳，把自己当做的替代品，却仍希望孟云能挽留自己。希望孟云能说出　
-<strong>我爱你</strong>，此时的孟云最可能说的是　<strong>对不起</strong>，实在是放不下林佳。而林佳线中，面对王鑫的无限温柔之下，她一开始也是无法放下孟云。影片一直给观众呈现的感觉就是最终他们一定能复合。</p>
+<h3 id="正式面试二面">正式面试二面</h3>
+<ol>
+  <li><strong>简单自我介绍下吧</strong><br />
+这个跟一面讲的差不多，大致讲了一下自己的技术栈，讲了一些关于自己所在的学校的工作室的相关事情。</li>
+  <li><strong>Java8 的新特性</strong><br />
+这里是面试的小哥哥问我平时开发用什么版本的jdk，然后我说是使用java8，面试官就直接问我java8特性了。我当时只答了一个lambda表达式，就是箭头函数，匿名类可以通过lambda表达式来实现。然后还有twr（try-with-resources），可以通过声明资源的try语句块，可以确保在程序结束的时候资源会被关闭。
+    <blockquote>
+      <p>twr后来查证是Java7的新特性。<br />
+<a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">【Java8的新特性】</a> 
+<a href="https://docs.oracle.com/javase/9/whatsnew/toc.htm#JSNEW-GUID-C23AFD78-C777-460B-8ACE-58BE5EA681F6">【Java9的新特性】</a> 
+<a href="http://www.oracle.com/technetwork/java/javase/10-relnotes-4108314.html">【Java10的新特性】</a><br />
+Java8的主要几个新特性是Lambda表达式、方法引用、Stream API、Date Time API等等。</p>
+    </blockquote>
+  </li>
+  <li><strong>你之前写的项目里面有遇到什么挑战吗</strong><br />
+公众号后台写爬虫获取学生成绩，假期的时候出现较大的并发访问，大家都在查成绩。这个时候我就是通过后台启动多个线程不间断通过绑定的学生账号去获取成绩，更新到Redis数据库里。同学查成绩的时候就是直接从redis中取获取，就能抗下压力。取代了之前直接一个请求就去查询一次的方式。</li>
+  <li><strong>跨域问题是怎么解决的</strong>  <br />
+因为之前说到自己在搭了一个简单的前后端分离的玩具项目，面试官就问了跨域的解决方法。之前用过JSONP，不过这个方法只能允GET请求，还有就是在controller里面手动给请求加头。后来我使用Springboot框架之后，里面有一个@CrossOrigin的注解，可以运行所有跨域访问，也可以单独指定服务器。</li>
+  <li><strong>HTTP协议了解过吗？HTTP1.0 2.0的区别</strong><br />
+不好意思，这块没有了解过。
+    <blockquote>
+      <p>这块我是真的没学过，惭愧惭愧，等学了之后会补坑。</p>
+    </blockquote>
+  </li>
+  <li><strong>SpringMVC与SpringBoot的区别</strong><br />
+Springboot相较SpringMVC配置更加简单，支持通过注解的形式来创建Bean和配置。Springboot内置了Tomcat可以直接打包成jar之后指定好端口就可以直接运行，省去配置Tomcat的过程。
+    <blockquote>
+      <p>答得比较浅，都是我使用过程中的直观感受。</p>
+    </blockquote>
+  </li>
+  <li><strong>GET和POST的区别</strong>
+这块我是从之前前后端分离的时候Restful的接口规范上答的，post是添加新建的api请求，get往往是获取指定资源的请求。get会显示的将参数显示在url里，然后因为浏览器的问题，get的url长度有限，意味着参数长度有限。
+    <blockquote>
 
-<p>剧中有无数次可以复合的机会，一次次的失去。早些时候年轻的时候想着的是怎么这么矫情，现在渐渐也能感受到造物弄人的感觉。最终一对5年的恋人分开了，林佳最终再见的方式是狂吃会过敏的芒果，孟云则是穿上至尊宝站在城市街头。一段感情从此彻底断开，这突然起来的，真的是令人心里堵着。多希望其实影片还有5分钟，这一切都能复合。</p>
+      <table>
+        <thead>
+          <tr>
+            <th>请求方法</th>
+            <th>GET</th>
+            <th>POST</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>后退/刷新</td>
+            <td>无害数据会被重新提交</td>
+            <td> </td>
+          </tr>
+          <tr>
+            <td>书签</td>
+            <td>可收藏为书签</td>
+            <td>不可收藏为书签</td>
+          </tr>
+          <tr>
+            <td>缓存</td>
+            <td>能被缓存</td>
+            <td>不能缓存</td>
+          </tr>
+          <tr>
+            <td>编码类型</td>
+            <td>application/x-www-form-urlencoded</td>
+            <td>application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</td>
+          </tr>
+          <tr>
+            <td>历史</td>
+            <td>参数保留在浏览器历史中。</td>
+            <td>参数不会保存在浏览器历史中。</td>
+          </tr>
+          <tr>
+            <td>数据长度的限制</td>
+            <td>GET方法向URL添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。</td>
+            <td>无限制。</td>
+          </tr>
+          <tr>
+            <td>数据类型的限制</td>
+            <td>只允许 ASCII 字符。</td>
+            <td>没有限制。也允许二进制数据。</td>
+          </tr>
+          <tr>
+            <td>安全性</td>
+            <td>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。</td>
+            <td>POST 比 GET 更安全,因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
+          </tr>
+          <tr>
+            <td>可见性</td>
+            <td>数据在 URL 中对所有人都是可见的。</td>
+            <td>数据不会显示在 URL 中。</td>
+          </tr>
+        </tbody>
+      </table>
 
-<p>男女主错了吗？他们中没有人错，感情的事情没有对与错。热恋的时候永远不知道会因为什么分开，走着走着可能就分开了。就像剧中，开始问为什么分手，记不清了。却一直一直放不下，但也一直一直无法复合。</p>
+      <p><a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp">GET 对比 POST</a></p>
+    </blockquote>
+  </li>
+  <li><strong>volatile关键字用过吗</strong><br />
+volatile变量是对线程可见的，因为在原有的机制中，在主存的变量在线程中使用时会建立线程的变量副本，这个时候就可能会出现数据不统一的问题。volatile变量在被改变时会通知到各个线程，每个线程要使用的时候都会从主存中再次读取数据。而且volatile没有加锁，所以这是个比较轻量的同步机制。</li>
+  <li><strong>乐观锁和悲观锁</strong><br />
+乐观锁和悲观锁在我的理解中是一种思想，悲观锁是认为我在并发时往往会发生问题，所以需要对整段数据进行加锁。而乐观锁就是持乐观态度，认为并发不会出错，他的并发控制不使用锁，而是通过类似于版本号的方式来同步，出现写数据时候，就将要写的和已有的数据版本进行比较然后交换。CAS也是乐观锁的实现方法，涉及内存值、预期值、新值，只有内存制和预期值相等，即我在我修改的之前没有线程修改过，我才可以将新值写入，但是这可能会出现ABA问题，而版本号可以解决ABA问题。</li>
+  <li><strong>ABA问题说明下</strong><br />
+就是刚才CAS方法，因为在我比较预期值和内存值得时候可能出现问题，内存值是A，预期值是A，但是内存其实经历了A变成B,B又变成A的过程，但是在宏观上看不出问题，但是实际上已经有数据变动。</li>
+  <li><strong>String、StringBuffer、StringBuilder区别</strong><br />
+String是常量，创建之后就不可变。StringBuffer、StringBuilder通过缓冲区可以变化，而Builder线程不安全，但修改速度最快，Buffer线程安全，但性能差于Builder。</li>
+  <li><strong>数据库怎么插入数据后立马返回自增的id</strong><br />
+我框架上用的JPA，JPA中有SAVE方法，插入新的数据后会返回实体对象，里面可以直接通过getId获取id。
+    <blockquote>
+      <p>然后要求我原生sql语句一句实现插入返回id，并没有回答出来。</p>
+    </blockquote>
+  </li>
+  <li><strong>怎么去学习新技术的</strong><br />
+平时看工作室成员的博客，每周技术分享会。最近一周学习了api如何防止重放攻击，通过在请求中带上随机数和时间戳来实现。在最近的分享会上给学弟学妹分享数据库优化心得。</li>
+</ol>
 
-<p>整部剧表现形式虽然夸张，但是分手之后的那种情绪波动，非常能引起观众的共鸣。自己何尝也不是在经历一段感情之后，久久走不出来呢。或许是1个月或许是1年，或许是更久。</p>
-
-<p>珍惜眼前人，且行且珍惜。有些人错过了，就是一辈子。</p>
-
-<p><img src="/img/in-post/2018/Ex-file/end.jpg" alt="" /></p>
+<p>整场面试下来，相较于一面略微感觉到难度有点提升，也是很多原理性的东西没学到精髓，有的时候有点依赖于框架。不过也算是顺利通过了，接下来就是三面技术面了，如果顺利的话应该就是最后一场技术面了，继续加油！</p>
 
 
                 <hr>
@@ -202,11 +296,11 @@
                 </style>
 <!--                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2018/01/02/The Ex-file"
-                    data-title="有些人错过了，就是一辈子"
-                    data-url="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/"
-                    data-images="http://localhost:4000/Outside-man.github.io/img/in-post/2018/Ex-file/end.jpg"
-                    data-content="今天看完《前任3》，影片开始还在吐槽剧情，看似分手，实则塞了观众满嘴口粮。一开场的，林佳来回进出房间，孟云在客厅坐立不安。发生的一切都好像是在说，这只是小... | 语海的博客 " >
+                    data-thread-key="/2018/03/29/Alibaba-interview-2"
+                    data-title="阿里校招 二面面经"
+                    data-url="http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/"
+                    data-images="http://localhost:4000/Outside-man.github.io/img/home-bg.jpeg"
+                    data-content="在经历完一面，一轮在线编程，就等着二面了。当我已经躺在床上准备刷刷知乎就打算睡觉的时候，突然一个陌生的电话打来。我警觉的意识到，这个应该就是阿里二面的电话... | 语海的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -226,13 +320,9 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/Outside-man.github.io/2017/12/22/minecraft-server/" data-toggle="tooltip" data-placement="top" title="minecraft开服实录">&larr; Previous Post</a>
+                        <a href="/Outside-man.github.io/2018/03/29/Alibaba-interview-1/" data-toggle="tooltip" data-placement="top" title="阿里校招 一面面经">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/Outside-man.github.io/2018/03/05/Redis-Attack/" data-toggle="tooltip" data-placement="top" title="一次Redis被攻击的体验">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
@@ -241,9 +331,9 @@
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2018/01/02/The Ex-file"
-                        data-title="有些人错过了，就是一辈子"
-                        data-url="http://localhost:4000/Outside-man.github.io/2018/01/02/The-Ex-file/" >
+                        data-thread-key="/2018/03/29/Alibaba-interview-2"
+                        data-title="阿里校招 二面面经"
+                        data-url="http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
