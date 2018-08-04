@@ -1,17 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>语海</title>
-    <description>井蛙不可以语于海者</description>
+    <title>珵玉</title>
+    <description>谦谦君子,温润如玉</description>
     <link>http://localhost:4000/Outside-man.github.io/</link>
     <atom:link href="http://localhost:4000/Outside-man.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 12 Apr 2018 20:24:00 +0800</pubDate>
-    <lastBuildDate>Thu, 12 Apr 2018 20:24:00 +0800</lastBuildDate>
+    <pubDate>Sun, 05 Aug 2018 02:02:06 +0800</pubDate>
+    <lastBuildDate>Sun, 05 Aug 2018 02:02:06 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
+        <title>阿里入职</title>
+        <description>&lt;p&gt;第一次入职，颇有紧张，按要求准备了入职材料，深怕遗漏。&lt;br /&gt;
+最头疼的还是想花名，之前参加完D2的时候，暗自给自己取了花名，语海，但是输入时，系统表示已经注册了。阿里的花名文化还是很有意思的，最终想了以下版本&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;珵玉 珵璞 璞玉&lt;br /&gt;
+主要还是想着玉形容男性，既可以表达君子品德，也可以通过玉来表示自己涉世未深，待人雕琢。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在昨天确定是&lt;strong&gt;珵璞&lt;/strong&gt;，珵代表美玉，我的品德比较温润。璞代表璞玉，我的能力待提升。不过在入职清早，反复推敲，最终觉得&lt;strong&gt;珵璞&lt;/strong&gt;太不顺嘴了，然后匆匆给老大发消息留言，请求把我的花名申请毙了（花名一旦申请，除非主管驳回，不然最终就会落下去了），老大应该也是没见过这么纠结的孩子吧。&lt;br /&gt;
+于是乎，最终我的花名确定为 &lt;strong&gt;珵玉&lt;/strong&gt; ，感觉看起来工整好看，读起来又比较顺口，so nice。顺便博客的名字也从语海改成了珵玉~~&lt;/p&gt;
+
+&lt;p&gt;迈入蚂蚁园区，有种朝圣的感觉（D2 之后我就把阿里当做我的朝圣地了），想到以后能在这里工作，我内心说不出的激动。&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;前台妹子是真滴好看！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;接待到新人培训班，内容主要是签一些实习生协议等文件，然后简单的对阿里文化有个认识，什么是六脉神剑，诚信第一。还再三强调了数据安全的高压线。最后下午讲了在园区的吃住行方面。&lt;/p&gt;
+
+&lt;p&gt;4点多我就来到工作组，当时老大还不在，我就被老大的老大安排了个位置，老大来了之后带我认识了一圈师兄们（有一个且仅仅只有一个师姐）。&lt;/p&gt;
+
+&lt;p&gt;本来跟家里说好，入职办好手续应该就能很快回家的。但是我安装好电脑之后，就被内网上丰富的文档吸引了，丰富而完整的文档，当天我就看到了晚上9点多，感觉就一个&lt;strong&gt;“爽到！”&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;入职阿里第一天，也是我第一次工作，难忘。&lt;br /&gt;
+&lt;img src=&quot;/img/in-post/2018/Entry-Alibaba/good_night_ant.jpg&quot; alt=&quot;good night ant&quot; /&gt;&lt;/p&gt;
+&lt;center&gt;晚安，蚂蚁&lt;/center&gt;
+</description>
+        <pubDate>Fri, 25 May 2018 06:00:00 +0800</pubDate>
+        <link>http://localhost:4000/Outside-man.github.io/2018/05/25/entry-Alibaba/</link>
+        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2018/05/25/entry-Alibaba/</guid>
+        
+        <category>生活</category>
+        
+        <category>工作</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>实习春招回顾</title>
+        <description>&lt;p&gt;总共在阿里电面5轮，4轮天猫，1轮1688.最终在5月16日收到了阿里口碑的offer，我也是一脸有点蒙蔽的。不过在一脸懵逼中，我也算是结束了我2018春招之旅。&lt;/p&gt;
+
+&lt;p&gt;这段时间总共去过阿里，网易，恒生，酷家乐共四家公司面试。面试过程中有被面试官虐过，也有收到面试官的肯定，种种都是我这一次春招的收获&lt;/p&gt;
+
+&lt;p&gt;简单回顾下面试经历吧。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;恒生面试1轮秒跪&quot;&gt;恒生面试（1轮，秒跪）&lt;/h3&gt;
+&lt;p&gt;这是第一次参与面试，上来是一大教室的人进行笔试，笔试内容很基础，但是确实没做好准备。尤其是在笔试卷子上有大段复杂的sql语句编写，在我平时已经依赖框架，而且习惯把业务写在代码而不是sql执行中的，这一次笔试确实让暴露了不足。不过还好时间比较早，春招才刚刚开始，我还有时间去梳理下知识点。&lt;/p&gt;
+
+&lt;h3 id=&quot;阿里面试5轮口碑offer&quot;&gt;阿里面试（5轮，口碑offer）&lt;/h3&gt;
+&lt;p&gt;阿里的面试总共经历5轮电面，让人感觉稳重，无论是面试质量还是面试流程都体现出只有是大技术公司才会有的成熟与稳健。&lt;br /&gt;
+多轮次的考核能很清楚地探出被面试的人知识的深度和广度，面的是java开发岗，考察面有 &lt;strong&gt;基础java知识、数据结构、算法、项目经历等等&lt;/strong&gt;。整场几轮面下来，也会让被面试人对自身有很深刻的体会。&lt;br /&gt;
+所有很建议在技术上找不到方法的同学，能去阿里体验下面试，即使拿不到offer也是会让人对自己有很好的认识。&lt;/p&gt;
+
+&lt;h3 id=&quot;网易面试3轮考拉被拒&quot;&gt;网易面试（3轮，考拉被拒）&lt;/h3&gt;
+&lt;p&gt;网易是到现场面试，是穿插在阿里面试时间中间。现场先面两轮，根据前两轮结果参与第三轮hr面，结果是在面试后14天内反馈。不过面试都一样，挂了不会主动通知，只会在录取的时候主动通知，挂了具体要过很久才能在招聘官网查到。&lt;br /&gt;
+第一轮面试时我第一次现场面试，紧张的一笔。说到项目经历，里面说到用过websocket，面试官就抓着我问了不了解websocket底层是怎么实现，卡壳很久。最好讲了点tcp三次握手（面试官尴尬的表情印象深刻）。不过问到java并发相关还是基本能答出来的。&lt;br /&gt;
+第二轮面试主要还是问java相关知识，内存模型，并发相关。可能面试官想问深，但是我答的都比较浅，不过还是能顺利到达第三轮hr。hr没什么太大亮点，都一样的，不细说。&lt;/p&gt;
+
+&lt;h3 id=&quot;酷家乐面试3轮offer&quot;&gt;酷家乐面试（3轮，offer）&lt;/h3&gt;
+&lt;p&gt;酷家乐是在拿到阿里offer之前面的，也是现场面。&lt;br /&gt;
+酷家乐第一轮是上机写代码，比较简单，是一个处理时间转换成指定模板。当时为了速度写的比较挫，不过写完才发现居然给了一小时，我就慢慢看了会 calender 类是怎么实现，顺便写了个单测，比较两个方法，性能差距不是很大。&lt;br /&gt;
+第二轮是算法面试，问了2个水题，1道简单dp，过程中确实很久没搞dp，转移方程想了比较久，基本面试20分钟内搞定了。&lt;br /&gt;
+第三轮是工程抽象面试，一个cd店，对不同用户提供不同cd（比如不能给孩子提供成人cd之类），对不同用户还有不同优惠，让我简单描述下怎么抽象，未来怎么能拓展这样的。当时讲了一点设计模式的东西，收到面试官肯定。&lt;br /&gt;
+整场下来，酷家乐面试很顺利，之前的所有准备，在这一次全部展现，获得了面试官的肯定。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;接下来要办理阿里的入职手续了，春招顺利结束。拿到实习offer，接下来要在暑假好好实习，快速成长。&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 17 May 2018 06:00:00 +0800</pubDate>
+        <link>http://localhost:4000/Outside-man.github.io/2018/05/17/interview-review/</link>
+        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2018/05/17/interview-review/</guid>
+        
+        <category>生活</category>
+        
+        <category>工作</category>
+        
+        
+      </item>
+    
+      <item>
         <title>阿里校招 二面面经</title>
-        <description>&lt;p&gt;在经历完一面，一轮在线编程，就等着二面了。当我已经躺在床上准备刷刷知乎就打算睡觉的时候，突然一个陌生的电话打来。我警觉的意识到，这个应该就是阿里二面的电话，瞬间坐起跑到阳台接起电话，果然就是二面面试。&lt;/p&gt;
+        <description>&lt;p&gt;在经历完一面，一轮在线编程，就等着二面了。当我已经躺在床上准备刷刷知乎就打算睡觉的时候，突然一个陌生电话打来，这个应该就是阿里二面的电话，瞬间坐起跑到阳台接起电话。&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -129,9 +213,9 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
 
 &lt;p&gt;整场面试下来，相较于一面略微感觉到难度有点提升，也是很多原理性的东西没学到精髓，有的时候有点依赖于框架。不过也算是顺利通过了，接下来就是三面技术面了，如果顺利的话应该就是最后一场技术面了，继续加油！&lt;/p&gt;
 </description>
-        <pubDate>Thu, 29 Mar 2018 05:00:00 +0800</pubDate>
-        <link>http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/</guid>
+        <pubDate>Wed, 04 Apr 2018 06:00:00 +0800</pubDate>
+        <link>http://localhost:4000/Outside-man.github.io/2018/04/04/Alibaba-interview-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2018/04/04/Alibaba-interview-2/</guid>
         
         <category>生活</category>
         
@@ -654,93 +738,6 @@ tree -L 1
         <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2017/12/22/minecraft-server/</guid>
         
         <category>minecraft</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>在linux系统自动备份数据库</title>
-        <description>&lt;h3 id=&quot;背景交代&quot;&gt;背景交代&lt;/h3&gt;
-&lt;p&gt;在给学校做一些项目的时候，会遇到学校工作人员误操作，导致数据库数据损坏。这时候我想阿里云的服务器肯定有mysql服务器的备份功能，然而要钱。&lt;br /&gt;
-我就想自己实现自动备份&lt;br /&gt;
-其实就是把备份命令写下来然后定时执行就行了。&lt;/p&gt;
-&lt;h5 id=&quot;步骤&quot;&gt;步骤&lt;/h5&gt;
-&lt;ol&gt;
-  &lt;li&gt;安装crontabs&lt;/li&gt;
-  &lt;li&gt;写好sh文件&lt;/li&gt;
-  &lt;li&gt;创建定时任务&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;尝试开始&quot;&gt;尝试开始&lt;/h2&gt;
-&lt;h3 id=&quot;1-crontabs&quot;&gt;1. crontabs&lt;/h3&gt;
-
-&lt;p&gt;学校用了新的服务器 很多没有配置&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-get install cron
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;惊奇发现 阿里云已经有了crontabs&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;cron is already the newest version (3.0pl1-128ubuntu2).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;2-sh文件&quot;&gt;2. sh文件&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;backupdir=/home/backup/backup
-#定义变量backupdir  备份数据之后放到哪里
-
-time='date +%Y%m%d%H'
-#定义时间变量
-
-mysqldump 数据库名 &amp;gt; $backupdir/备份名_$(date +%Y_%m_%d_%H%M%S).sql
-#通过mysqldump指令指定数据库备份，通过管道备份为backupdir下的 以备份名_时间命名的.sql文件
-
-find $backupdir -name &quot;sztw_*.sql&quot; -type f -mtime +30 -exec rm {}\; &amp;gt; /dev/null 2&amp;gt;&amp;amp;1
-#find $backupdir -name &quot;sztw_*.sql&quot; -type f -mtime +30 -exec rm {}\;
-#找到打包文件夹下面的备份文件 类型普通文件，时间超过30日的删除
-#&amp;gt; /dev/null 2&amp;gt;&amp;amp;1 
-#这个是让如果有输出指令不要打印
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;写完sh 别忘了把文件权限为可执行chmod u+x xxxxx.sh&lt;br /&gt;
-然后尝试 ./xxxxx.sh 执行一发&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vim /etc/mysql/my.cnf
-#里的末尾添加
-[mysqldump]
-user='username'
-password='password'
-#这样就可以在备份的时候自动登入数据库账号
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;3创建定时任务&quot;&gt;3.创建定时任务&lt;/h3&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;crontab -e
-
-#进入到任务编辑文件 添加任务
-0 0 * * * /xxxxx.sh  #所在文件
-#表示每天的0:00执行sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;crontab 中前面五个值分别表示分钟、小时、几号、月份、周几&lt;br /&gt;
-(*)表示所有可能&lt;br /&gt;
-(,)逗号隔开几个表示列表范围 如1,3,5&lt;br /&gt;
-(-)表示整数范围 如2-6&lt;br /&gt;
-(/)表示时间频率 0-23/2 每两小时一次 */10每十分钟一次&lt;/p&gt;
-
-&lt;p&gt;完成后重启下crontabs服务&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;service cron restart
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;到此大功告成&lt;/p&gt;
-</description>
-        <pubDate>Tue, 12 Dec 2017 20:00:00 +0800</pubDate>
-        <link>http://localhost:4000/Outside-man.github.io/2017/12/12/database-backup/</link>
-        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2017/12/12/database-backup/</guid>
-        
-        <category>服务器</category>
-        
-        <category>Linux</category>
-        
-        <category>技术</category>
         
         
       </item>

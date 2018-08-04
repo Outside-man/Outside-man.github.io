@@ -2,7 +2,7 @@
 layout:     post
 title:      "D2·乘风"
 date:       2018-03-17 21:00:00
-author:     "yuhai"
+author:     "chengyu.yxm"
 header-img: "img/in-post/2018/D2-Developer/bg.jpeg"
 tags:
     - 技术

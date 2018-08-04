@@ -2,7 +2,7 @@
 layout:     post
 title:      "在linux系统自动备份数据库"
 date:       2017-12-12 12:00:00
-author:     "yuhai"
+author:     "chengyu.yxm"
 tags:
     - 服务器
     - Linux

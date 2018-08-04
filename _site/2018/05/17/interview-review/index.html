@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="井蛙不可以语于海者">
+    <meta name="description" content="谦谦君子,温润如玉">
     <meta name="keyword"  content="">
     <!-- <link rel="shortcut icon" href="/Outside-man.github.io/img/favicon.ico"> -->
 
-    <title>阿里校招 二面面经 - 语海的博客</title>
+    <title>实习春招回顾 - 珵玉的博客</title>
 
-    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/">
+    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/05/17/interview-review/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/Outside-man.github.io/css/bootstrap.min.css">
@@ -62,7 +62,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/Outside-man.github.io/">语海</a>
+            <a class="navbar-brand" href="/Outside-man.github.io/">珵玉</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -142,15 +142,15 @@
                         
                         <a class="tag" href="/Outside-man.github.io/tags/#生活" title="生活">生活</a>
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#技术" title="技术">技术</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#工作" title="工作">工作</a>
                         
                     </div>
-                    <h1>阿里校招 二面面经</h1>
+                    <h1>实习春招回顾</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by yuhai on March 29, 2018</span>
+                    <span class="meta">Posted by chengyu.yxm on May 17, 2018</span>
                 </div>
             </div>
         </div>
@@ -170,123 +170,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>在经历完一面，一轮在线编程，就等着二面了。当我已经躺在床上准备刷刷知乎就打算睡觉的时候，突然一个陌生的电话打来。我警觉的意识到，这个应该就是阿里二面的电话，瞬间坐起跑到阳台接起电话，果然就是二面面试。</p>
+				<p>总共在阿里电面5轮，4轮天猫，1轮1688.最终在5月16日收到了阿里口碑的offer，我也是一脸有点蒙蔽的。不过在一脸懵逼中，我也算是结束了我2018春招之旅。</p>
+
+<p>这段时间总共去过阿里，网易，恒生，酷家乐共四家公司面试。面试过程中有被面试官虐过，也有收到面试官的肯定，种种都是我这一次春招的收获</p>
+
+<p>简单回顾下面试经历吧。</p>
 
 <hr />
 
-<h3 id="正式面试二面">正式面试二面</h3>
-<ol>
-  <li><strong>简单自我介绍下吧</strong><br />
-这个跟一面讲的差不多，大致讲了一下自己的技术栈，讲了一些关于自己所在的学校的工作室的相关事情。</li>
-  <li><strong>Java8 的新特性</strong><br />
-这里是面试的小哥哥问我平时开发用什么版本的jdk，然后我说是使用java8，面试官就直接问我java8特性了。我当时只答了一个lambda表达式，就是箭头函数，匿名类可以通过lambda表达式来实现。然后还有twr（try-with-resources），可以通过声明资源的try语句块，可以确保在程序结束的时候资源会被关闭。
-    <blockquote>
-      <p>twr后来查证是Java7的新特性。<br />
-<a href="http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html">【Java8的新特性】</a> 
-<a href="https://docs.oracle.com/javase/9/whatsnew/toc.htm#JSNEW-GUID-C23AFD78-C777-460B-8ACE-58BE5EA681F6">【Java9的新特性】</a> 
-<a href="http://www.oracle.com/technetwork/java/javase/10-relnotes-4108314.html">【Java10的新特性】</a><br />
-Java8的主要几个新特性是Lambda表达式、方法引用、Stream API、Date Time API等等。</p>
-    </blockquote>
-  </li>
-  <li><strong>你之前写的项目里面有遇到什么挑战吗</strong><br />
-公众号后台写爬虫获取学生成绩，假期的时候出现较大的并发访问，大家都在查成绩。这个时候我就是通过后台启动多个线程不间断通过绑定的学生账号去获取成绩，更新到Redis数据库里。同学查成绩的时候就是直接从redis中取获取，就能抗下压力。取代了之前直接一个请求就去查询一次的方式。</li>
-  <li><strong>跨域问题是怎么解决的</strong>  <br />
-因为之前说到自己在搭了一个简单的前后端分离的玩具项目，面试官就问了跨域的解决方法。之前用过JSONP，不过这个方法只能允GET请求，还有就是在controller里面手动给请求加头。后来我使用Springboot框架之后，里面有一个@CrossOrigin的注解，可以运行所有跨域访问，也可以单独指定服务器。</li>
-  <li><strong>HTTP协议了解过吗？HTTP1.0 2.0的区别</strong><br />
-不好意思，这块没有了解过。
-    <blockquote>
-      <p>这块我是真的没学过，惭愧惭愧，等学了之后会补坑。</p>
-    </blockquote>
-  </li>
-  <li><strong>SpringMVC与SpringBoot的区别</strong><br />
-Springboot相较SpringMVC配置更加简单，支持通过注解的形式来创建Bean和配置。Springboot内置了Tomcat可以直接打包成jar之后指定好端口就可以直接运行，省去配置Tomcat的过程。
-    <blockquote>
-      <p>答得比较浅，都是我使用过程中的直观感受。</p>
-    </blockquote>
-  </li>
-  <li><strong>GET和POST的区别</strong>
-这块我是从之前前后端分离的时候Restful的接口规范上答的，post是添加新建的api请求，get往往是获取指定资源的请求。get会显示的将参数显示在url里，然后因为浏览器的问题，get的url长度有限，意味着参数长度有限。
-    <blockquote>
+<h3 id="恒生面试1轮秒跪">恒生面试（1轮，秒跪）</h3>
+<p>这是第一次参与面试，上来是一大教室的人进行笔试，笔试内容很基础，但是确实没做好准备。尤其是在笔试卷子上有大段复杂的sql语句编写，在我平时已经依赖框架，而且习惯把业务写在代码而不是sql执行中的，这一次笔试确实让暴露了不足。不过还好时间比较早，春招才刚刚开始，我还有时间去梳理下知识点。</p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>请求方法</th>
-            <th>GET</th>
-            <th>POST</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>后退/刷新</td>
-            <td>无害数据会被重新提交</td>
-            <td> </td>
-          </tr>
-          <tr>
-            <td>书签</td>
-            <td>可收藏为书签</td>
-            <td>不可收藏为书签</td>
-          </tr>
-          <tr>
-            <td>缓存</td>
-            <td>能被缓存</td>
-            <td>不能缓存</td>
-          </tr>
-          <tr>
-            <td>编码类型</td>
-            <td>application/x-www-form-urlencoded</td>
-            <td>application/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</td>
-          </tr>
-          <tr>
-            <td>历史</td>
-            <td>参数保留在浏览器历史中。</td>
-            <td>参数不会保存在浏览器历史中。</td>
-          </tr>
-          <tr>
-            <td>数据长度的限制</td>
-            <td>GET方法向URL添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。</td>
-            <td>无限制。</td>
-          </tr>
-          <tr>
-            <td>数据类型的限制</td>
-            <td>只允许 ASCII 字符。</td>
-            <td>没有限制。也允许二进制数据。</td>
-          </tr>
-          <tr>
-            <td>安全性</td>
-            <td>与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。</td>
-            <td>POST 比 GET 更安全,因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
-          </tr>
-          <tr>
-            <td>可见性</td>
-            <td>数据在 URL 中对所有人都是可见的。</td>
-            <td>数据不会显示在 URL 中。</td>
-          </tr>
-        </tbody>
-      </table>
+<h3 id="阿里面试5轮口碑offer">阿里面试（5轮，口碑offer）</h3>
+<p>阿里的面试总共经历5轮电面，让人感觉稳重，无论是面试质量还是面试流程都体现出只有是大技术公司才会有的成熟与稳健。<br />
+多轮次的考核能很清楚地探出被面试的人知识的深度和广度，面的是java开发岗，考察面有 <strong>基础java知识、数据结构、算法、项目经历等等</strong>。整场几轮面下来，也会让被面试人对自身有很深刻的体会。<br />
+所有很建议在技术上找不到方法的同学，能去阿里体验下面试，即使拿不到offer也是会让人对自己有很好的认识。</p>
 
-      <p><a href="http://www.w3school.com.cn/tags/html_ref_httpmethods.asp">GET 对比 POST</a></p>
-    </blockquote>
-  </li>
-  <li><strong>volatile关键字用过吗</strong><br />
-volatile变量是对线程可见的，因为在原有的机制中，在主存的变量在线程中使用时会建立线程的变量副本，这个时候就可能会出现数据不统一的问题。volatile变量在被改变时会通知到各个线程，每个线程要使用的时候都会从主存中再次读取数据。而且volatile没有加锁，所以这是个比较轻量的同步机制。</li>
-  <li><strong>乐观锁和悲观锁</strong><br />
-乐观锁和悲观锁在我的理解中是一种思想，悲观锁是认为我在并发时往往会发生问题，所以需要对整段数据进行加锁。而乐观锁就是持乐观态度，认为并发不会出错，他的并发控制不使用锁，而是通过类似于版本号的方式来同步，出现写数据时候，就将要写的和已有的数据版本进行比较然后交换。CAS也是乐观锁的实现方法，涉及内存值、预期值、新值，只有内存制和预期值相等，即我在我修改的之前没有线程修改过，我才可以将新值写入，但是这可能会出现ABA问题，而版本号可以解决ABA问题。</li>
-  <li><strong>ABA问题说明下</strong><br />
-就是刚才CAS方法，因为在我比较预期值和内存值得时候可能出现问题，内存值是A，预期值是A，但是内存其实经历了A变成B,B又变成A的过程，但是在宏观上看不出问题，但是实际上已经有数据变动。</li>
-  <li><strong>String、StringBuffer、StringBuilder区别</strong><br />
-String是常量，创建之后就不可变。StringBuffer、StringBuilder通过缓冲区可以变化，而Builder线程不安全，但修改速度最快，Buffer线程安全，但性能差于Builder。</li>
-  <li><strong>数据库怎么插入数据后立马返回自增的id</strong><br />
-我框架上用的JPA，JPA中有SAVE方法，插入新的数据后会返回实体对象，里面可以直接通过getId获取id。
-    <blockquote>
-      <p>然后要求我原生sql语句一句实现插入返回id，并没有回答出来。</p>
-    </blockquote>
-  </li>
-  <li><strong>怎么去学习新技术的</strong><br />
-平时看工作室成员的博客，每周技术分享会。最近一周学习了api如何防止重放攻击，通过在请求中带上随机数和时间戳来实现。在最近的分享会上给学弟学妹分享数据库优化心得。</li>
-</ol>
+<h3 id="网易面试3轮考拉被拒">网易面试（3轮，考拉被拒）</h3>
+<p>网易是到现场面试，是穿插在阿里面试时间中间。现场先面两轮，根据前两轮结果参与第三轮hr面，结果是在面试后14天内反馈。不过面试都一样，挂了不会主动通知，只会在录取的时候主动通知，挂了具体要过很久才能在招聘官网查到。<br />
+第一轮面试时我第一次现场面试，紧张的一笔。说到项目经历，里面说到用过websocket，面试官就抓着我问了不了解websocket底层是怎么实现，卡壳很久。最好讲了点tcp三次握手（面试官尴尬的表情印象深刻）。不过问到java并发相关还是基本能答出来的。<br />
+第二轮面试主要还是问java相关知识，内存模型，并发相关。可能面试官想问深，但是我答的都比较浅，不过还是能顺利到达第三轮hr。hr没什么太大亮点，都一样的，不细说。</p>
 
-<p>整场面试下来，相较于一面略微感觉到难度有点提升，也是很多原理性的东西没学到精髓，有的时候有点依赖于框架。不过也算是顺利通过了，接下来就是三面技术面了，如果顺利的话应该就是最后一场技术面了，继续加油！</p>
+<h3 id="酷家乐面试3轮offer">酷家乐面试（3轮，offer）</h3>
+<p>酷家乐是在拿到阿里offer之前面的，也是现场面。<br />
+酷家乐第一轮是上机写代码，比较简单，是一个处理时间转换成指定模板。当时为了速度写的比较挫，不过写完才发现居然给了一小时，我就慢慢看了会 calender 类是怎么实现，顺便写了个单测，比较两个方法，性能差距不是很大。<br />
+第二轮是算法面试，问了2个水题，1道简单dp，过程中确实很久没搞dp，转移方程想了比较久，基本面试20分钟内搞定了。<br />
+第三轮是工程抽象面试，一个cd店，对不同用户提供不同cd（比如不能给孩子提供成人cd之类），对不同用户还有不同优惠，让我简单描述下怎么抽象，未来怎么能拓展这样的。当时讲了一点设计模式的东西，收到面试官肯定。<br />
+整场下来，酷家乐面试很顺利，之前的所有准备，在这一次全部展现，获得了面试官的肯定。</p>
+
+<hr />
+
+<p>接下来要办理阿里的入职手续了，春招顺利结束。拿到实习offer，接下来要在暑假好好实习，快速成长。</p>
+
 
 
                 <hr>
@@ -296,11 +211,11 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
                 </style>
 <!--                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2018/03/29/Alibaba-interview-2"
-                    data-title="阿里校招 二面面经"
-                    data-url="http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/"
+                    data-thread-key="/2018/05/17/interview-review"
+                    data-title="实习春招回顾"
+                    data-url="http://localhost:4000/Outside-man.github.io/2018/05/17/interview-review/"
                     data-images="http://localhost:4000/Outside-man.github.io/img/home-bg.jpeg"
-                    data-content="在经历完一面，一轮在线编程，就等着二面了。当我已经躺在床上准备刷刷知乎就打算睡觉的时候，突然一个陌生的电话打来。我警觉的意识到，这个应该就是阿里二面的电话... | 语海的博客 " >
+                    data-content="总共在阿里电面5轮，4轮天猫，1轮1688.最终在5月16日收到了阿里口碑的offer，我也是一脸有点蒙蔽的。不过在一脸懵逼中，我也算是结束了我2018春... | 珵玉的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -320,9 +235,13 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/Outside-man.github.io/2018/03/29/Alibaba-interview-1/" data-toggle="tooltip" data-placement="top" title="阿里校招 一面面经">&larr; Previous Post</a>
+                        <a href="/Outside-man.github.io/2018/04/04/Alibaba-interview-2/" data-toggle="tooltip" data-placement="top" title="阿里校招 二面面经">&larr; Previous Post</a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/Outside-man.github.io/2018/05/25/entry-Alibaba/" data-toggle="tooltip" data-placement="top" title="阿里入职">Next Post &rarr;</a>
+                    </li>
                     
                 </ul>
 
@@ -331,9 +250,9 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2018/03/29/Alibaba-interview-2"
-                        data-title="阿里校招 二面面经"
-                        data-url="http://localhost:4000/Outside-man.github.io/2018/03/29/Alibaba-interview-2/" >
+                        data-thread-key="/2018/05/17/interview-review"
+                        data-title="实习春招回顾"
+                        data-url="http://localhost:4000/Outside-man.github.io/2018/05/17/interview-review/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
@@ -373,7 +292,7 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
                             
         				
                             
-                				<a href="/Outside-man.github.io/tags/#生活" title="生活" rel="4">
+                				<a href="/Outside-man.github.io/tags/#生活" title="生活" rel="6">
                                     生活
                                 </a>
                             
@@ -388,6 +307,12 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
         				
                             
         				
+                            
+        				
+                            
+                				<a href="/Outside-man.github.io/tags/#工作" title="工作" rel="2">
+                                    工作
+                                </a>
                             
         				
         			</div>
@@ -421,7 +346,7 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
     // dynamic User by Hux
-    var _user = 'yuhaiblog';
+    var _user = 'chengyublog';
 
     // duoshuo comment query.
     var duoshuoQuery = {short_name: _user };
@@ -480,7 +405,7 @@ String是常量，创建之后就不可变。StringBuffer、StringBuilder通过�
                     
                 </ul>
                 <p class="copyright text-muted">
-                    Copyright &copy; 语海 2018
+                    Copyright &copy; 珵玉 2018
                 </p>
             </div>
         </div>

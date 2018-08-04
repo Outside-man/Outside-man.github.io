@@ -2,7 +2,7 @@
 layout:     post
 title:      "有些人错过了，就是一辈子"
 date:       2018-01-02 12:00:00
-author:     "yuhai"
+author:     "chengyu.yxm"
 header-img: "img/in-post/2018/Ex-file/end.jpg"
 header-music: "535250515"
 tags:

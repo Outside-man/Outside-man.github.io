@@ -2,7 +2,7 @@
 layout:     post
 title:      "一次Redis被攻击的体验"
 date:       2018-03-05 12:00:00
-author:     "yuhai"
+author:     "chengyu.yxm"
 header-img: "img/in-post/2018/Redis-Attack/bg.jpg"
 tags:
     - 网络安全

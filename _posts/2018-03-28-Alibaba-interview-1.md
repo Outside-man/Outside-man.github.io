@@ -2,7 +2,7 @@
 layout:     post
 title:      "阿里校招 一面面经"
 date:       2018-03-28 21:00:00
-author:     "yuhai"
+author:     "chengyu.yxm"
 tags:
     - 生活
     - 技术
