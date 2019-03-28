@@ -5,9 +5,199 @@
     <description>谦谦君子,温润如玉</description>
     <link>http://localhost:4000/Outside-man.github.io/</link>
     <atom:link href="http://localhost:4000/Outside-man.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 05 Aug 2018 02:02:06 +0800</pubDate>
-    <lastBuildDate>Sun, 05 Aug 2018 02:02:06 +0800</lastBuildDate>
+    <pubDate>Thu, 28 Mar 2019 12:03:21 +0800</pubDate>
+    <lastBuildDate>Thu, 28 Mar 2019 12:03:21 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>配置线上监控</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;在双十一之后结束了实习生活又可以开始划水学习下技术了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在阿里实习期间发现大公司对于线上代码运行的质量把握很牢，配有大量的监控措施。以至于在双十一期间能立刻响应问题。但是公司内部都是必源的中间件，想要在开源环境下也做到对线上流量的实时监控就不容易，得需要找一些资料内容。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;elk&quot;&gt;ELK&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;ELK ELK是三个开源软件的缩写,分别表示:Elasticsearch , Logstash, Kibana&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;线上流量的监控一种比较常见的方法，就是对日志进行采集监控。在网上搜罗了一圈，找到了 &lt;strong&gt;ELK&lt;/strong&gt; 来做日志的解析。
+首先先去阿里云上购买一台学生机(政治争取!) 之后先配上环境。&lt;/p&gt;
+
+&lt;h3 id=&quot;1-配置环境&quot;&gt;1. 配置环境&lt;/h3&gt;
+&lt;p&gt;配置 Java, Mysql, Redis&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# 先更新apt-get
+sudo apt-get update
+
+
+## Java 环境安装
+# 安装一波 jdk
+sudo apt-get install openjdk-8-jdk
+# 校验下
+java -version
+
+
+## Mysql 安装配置 (记得在阿里云控制台开放 对应端口)
+# 安装一波 mysql 注意需要配置root密码
+sudo apt-get install mysql-server
+# 校验下端口是否正常能监听
+sudo netstat -tap | grep mysql
+# 修改可连接的ip (文件路径不一定一样)
+# 找到 bind-address = 127.0.0.1 注释掉或者改为指定的ip 保存后重启服务器
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+# 重启mysql服务
+sudo service mysql restart
+# 还需要在数据表内设置用户对外开发
+mysql -u 用户名 -p
+Enter password:
+mysql&amp;gt; GRANT ALL PRIVILEGES ON *.* TO '用户名'@'%' IDENTIFIED BY '密码' WITH GRANT OPTION;
+*.* -- 表示哪个库的哪个表
+%   -- 表示允许哪个ip访问
+mysql&amp;gt; flush privileges; 
+# 完成之后可以尝试用本地workbench连接
+
+
+## Redis 安装配置
+# 安装一波 Redis
+sudo apt-get install redis-server
+# check redis进程是否正常
+sudo ps -aux|grep redis
+# 修改可连接的ip (文件路径不一定一样)
+# 找到 bind-address = 127.0.0.1 注释掉或者改为指定的ip 保存后重启服务器
+# 找到 requirepass 解除注释并设置密码
+vim /etc/redis/redis.conf
+# 重启redis
+sudo service redis restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;2-安装elk&quot;&gt;2. 安装ELK&lt;/h3&gt;
+
+&lt;h4 id=&quot;21-安装elasticsearch&quot;&gt;2.1 安装Elasticsearch&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://www.elastic.co/cn/downloads/elasticsearch&quot;&gt;[安装地址](https://www.elastic.co/cn/downloads/elasticsearch)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;找到下载地址&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# [url]是下载地址， -b 表示后端下载 -c支持断点续传
+wget [url] -bc
+
+# 下载完毕后 解压到对应文件夹
+tar -zxf elasticsearch-6.5.1.tar.gz -C /home/elk
+
+# 由于Elasticsearch 不允许root用户允许(由于Elasticsearch 允许输入shell 存在安全问题)
+# 创建一个专门用于允许Elasticsearch的账户
+useradd es
+# 将对于文件夹的权限赋予该账户
+chown -R es:es  /home/elk/elasticsearch
+# 修改绑定访问ip(可以改成内网ip)
+vim /config/elasticsearch.yml
+network.host: 0.0.0.0
+
+# 修改服务器内核 network配置
+1. 端口释放时间
+sysctl -w net.ipv4.tcp_fin_timeout=30
+2. 开启对于TCP时间戳的支持
+sysctl -w net.ipv4.tcp_timestamps=1
+3. 开启TCP连接中TIME-WAIT sockets的快速回收
+sysctl -w net.ipv4.tcp_tw_recycle=1
+
+# 虚拟内存不足，修改/etc/sysctl.conf 添加 vm.max_map_count=262144，然后重启机器
+vim /etc/sysctl.conf
+# 最大文件描述符 修改/etc/security/limits.conf 添加 * - nofile 65536
+vim /etc/security/limits.conf
+
+# jvm.options 修改jvm虚拟内存
+vim config/jvm.options
+
+# 完事切过去
+su es
+# 执行es -d 后台执行
+./bin/elasticsearch -d
+
+此时访问9200端口会有东西返回
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;22-安装filebeat&quot;&gt;2.2 安装Filebeat&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;由于性能问题，Filebeat性能更优，而且现在Elasticsearch已经支持直接读取Filebeat&lt;br /&gt;
+&lt;a href=&quot;https://www.elastic.co/downloads/beats/filebeat&quot;&gt;[安装地址](https://www.elastic.co/downloads/beats/filebeat)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;找到下载地址&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# [url]是下载地址， -b 表示后端下载 -c支持断点续传
+wget [url] -bc
+
+# 下载完毕后 解压到对应文件夹
+tar -zxf filebeat-6.5.1-linux-x86_64.tar.gz -C /home/elk
+
+#验证是否安装正确
+bin/logstash -e 'input { stdin {} } output { stdout {} }'
+
+# 然后输入 hello world 有点东西
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;23-安装kibana&quot;&gt;2.3 安装Kibana&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://www.elastic.co/downloads/kibana&quot;&gt;[安装地址](https://www.elastic.co/downloads/kibana)&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;找到下载地址&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# [url]是下载地址， -b 表示后端下载 -c支持断点续传
+wget [url] -bc
+
+# 下载完毕后 解压到对应文件夹
+tar -zxf kibana-6.5.1-linux-x86_64.tar.gz -C /home/elk
+
+# 修改config/kibaba.yml server.host: &quot;0.0.0.0&quot;,看了下还可以添加用户名密码访问
+vim config/kibaba.yml
+
+# 验证是否安装正确
+./bin/kibana
+# 后台运行
+nohup ./bin/kibana &amp;amp;
+
+# 然后访问5601端口(记得阿里云上配置开放端口)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;配置解析日志-待验证&quot;&gt;配置解析日志 (待验证)&lt;/h2&gt;
+
+&lt;p&gt;bin/logstash -f logstash.conf&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;input {
+# 以文件作为来源
+    file {
+    # 日志文件路径
+        path =&amp;gt; &quot;xxx/xx.log&quot;
+    }
+}
+filter {
+    #定义数据的格式，正则解析日志（根据实际需要对日志日志过滤、收集）
+    grok {
+        match =&amp;gt; { &quot;message&quot; =&amp;gt; &quot;%{IPV4:clientIP}|%{GREEDYDATA:request}|%{NUMBER:duration}&quot;}
+    }
+    #根据需要对数据的类型转换
+    mutate { convert =&amp;gt; { &quot;duration&quot; =&amp;gt; &quot;integer&quot; }}
+}
+    # 定义输出
+output {
+    elasticsearch {
+        #Elasticsearch 默认端口
+        hosts =&amp;gt; [&quot;localhost:9200&quot;] 
+    }
+}　　
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Fri, 23 Nov 2018 08:03:00 +0800</pubDate>
+        <link>http://localhost:4000/Outside-man.github.io/2018/11/23/logstash/</link>
+        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2018/11/23/logstash/</guid>
+        
+        <category>学习</category>
+        
+        <category>运维</category>
+        
+        
+      </item>
     
       <item>
         <title>阿里入职</title>
@@ -636,108 +826,6 @@ $docker push [REPOSITORY:TAG] #将镜像推到dockerhub
         <category>影评</category>
         
         <category>前任3：再见前任</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>minecraft开服实录</title>
-        <description>&lt;h3 id=&quot;写在前面&quot;&gt;写在前面&lt;/h3&gt;
-&lt;p&gt;Minecraft(简称Mc) 是一款从中学一直玩到大学都觉得非常好玩的游戏&lt;br /&gt;
-但是以前和小伙伴玩的时候是通过蛤蟆吃或者是本地建服然后端口开放出去。这些方法都是中学的时候一点点看着论坛摸索出来的。之后进了大学就都是在寝室里局域网play。&lt;br /&gt;
-这次有机会搞到了一台还不错的ubuntu的服务器，打算在上面建个服，然后放假了大家可以在家里玩。但是再liunx的服务器上，没有图形化界面 开服就没那么容易，就参考着资料试试看。&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;需要材料&quot;&gt;需要材料&lt;/h3&gt;
-&lt;ol&gt;
-  &lt;li&gt;jdk&lt;/li&gt;
-  &lt;li&gt;minecraft_server.jar&lt;/li&gt;
-  &lt;li&gt;forge-install.jar&lt;/li&gt;
-  &lt;li&gt;forge-universal.jar&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;搞起以1710为例&quot;&gt;搞起(以1.7.10为例)&lt;/h3&gt;
-&lt;p&gt;java环境就不多说了。直接创个目录就把上面三个jar丢进去。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java -Xmx2048M -Xms2048M -XX:ParallelGCThreads=16 -jar minecraft_server.1.7.10.jar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;-Xmx最大内存 -Xms最小内存 -XX:ParallelGCThreads同时调用CPU数量，建议不设&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;第一次运行的时候 会要求签署EULA文件。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;eula=true
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;再次运行，这个时候一个&lt;strong&gt;纯净服务器&lt;/strong&gt;就开起来了。&lt;/p&gt;
-&lt;h4 id=&quot;forge&quot;&gt;Forge&lt;/h4&gt;
-&lt;p&gt;如果没有forge-install.jar、forge-universal.jar那就wget&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.10-10.13.2.1291/forge-1.7.10-10.13.2.1291-installer.jar
-wget http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.10-10.13.2.1291/forge-1.7.10-10.13.2.1291-universal.jar
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;有了之后就开始安装forge&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java -jar forge-1.7.10-10.13.2.1291-installer.jar nogui --installServer
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;同目录下必须有minecraft_server.1.7.10.jar，注意版本号&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;启动forge服务器&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java -jar forge-1.7.10-10.13.2.1291-universal.jar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;可以装mod的服务器就配置好了（撒花&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;如果是盗版服的话 修改server.properties 里的 online-mode=false&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;还有一点点&quot;&gt;还有一点点&lt;/h4&gt;
-&lt;p&gt;这个时候在目录下面有两个jar(forge-install.jar安装完毕后就可以删除了),强迫症不能忍啊，整到一个jar里面&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir tmp
-cd tmp
-tmp ../minecraft_server.1.7.10.jar
-tmp ../forge-1.7.10-10.13.2.1291-universal.jar
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Archive: ../forge-1.7.10-10.13.2.1291-universal.jar &lt;br /&gt;
-replace META-INF/MANIFEST.MF? [y]es, [n]o, [A]ll, [N]one, [r]ename: A&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;zip -r ../Forge-minecraft_server.1.7.10.jar *
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;这样的话可以就把server和forge里的东西整一块,把tmp文件夹以及之前的jar删除即可。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;完成之后的文件树
-
-tree -L 1
-
-├── banned-ips.json
-├── banned-players.json
-├── config
-├── eula.txt
-├── Forge-minecraft_server.1.7.10.jar
-├── libraries
-├── logs
-├── mods
-├── ops.json
-├── server.properties
-├── usercache.json
-├── whitelist.json
-└── world
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;打上mod，开始Mc之旅吧~&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nohup java -Xmx2048M -Xms2048M -XX:ParallelGCThreads=16 -jar minecraft_server.1.7.10.jar &amp;amp;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-</description>
-        <pubDate>Fri, 22 Dec 2017 20:00:00 +0800</pubDate>
-        <link>http://localhost:4000/Outside-man.github.io/2017/12/22/minecraft-server/</link>
-        <guid isPermaLink="true">http://localhost:4000/Outside-man.github.io/2017/12/22/minecraft-server/</guid>
-        
-        <category>minecraft</category>
         
         
       </item>

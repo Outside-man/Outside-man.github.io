@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <!-- <link rel="shortcut icon" href="/Outside-man.github.io/img/favicon.ico"> -->
 
-    <title>一次Redis被攻击的体验 - 珵玉的博客</title>
+    <title>配置线上监控 - 珵玉的博客</title>
 
-    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/03/05/Redis-Attack/">
+    <link rel="canonical" href="http://localhost:4000/Outside-man.github.io/2018/11/23/logstash/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/Outside-man.github.io/css/bootstrap.min.css">
@@ -125,12 +125,12 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/Outside-man.github.io/img/in-post/2018/Redis-Attack/bg.jpg" width="0" height="0"> -->
+<!-- <img src="/Outside-man.github.io/img/home-bg.jpeg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/Outside-man.github.io/img/in-post/2018/Redis-Attack/bg.jpg')
+        background-image: url('/Outside-man.github.io/img/home-bg.jpeg')
     }
 </style>
 <header class="intro-header" >
@@ -140,19 +140,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#网络安全" title="网络安全">网络安全</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#学习" title="学习">学习</a>
                         
-                        <a class="tag" href="/Outside-man.github.io/tags/#服务器" title="服务器">服务器</a>
-                        
-                        <a class="tag" href="/Outside-man.github.io/tags/#Redis" title="Redis">Redis</a>
+                        <a class="tag" href="/Outside-man.github.io/tags/#运维" title="运维">运维</a>
                         
                     </div>
-                    <h1>一次Redis被攻击的体验</h1>
+                    <h1>配置线上监控</h1>
                     
                     
                     <h2 class="subheading"></h2>
                     
-                    <span class="meta">Posted by chengyu.yxm on March 5, 2018</span>
+                    <span class="meta">Posted by chengyu.yxm on November 23, 2018</span>
                 </div>
             </div>
         </div>
@@ -172,38 +170,182 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<p>今天本来高高兴兴地在开发项目，当我打开redis远程管理的时候突然发现，数据库中多了两条奇怪的数据。
-<img src="/img/in-post/2018/Redis-Attack/n1.jpg" alt="" /></p>
-<center>n1</center>
-<p><img src="/img/in-post/2018/Redis-Attack/n2.jpg" alt="" /></p>
-<center>n2</center>
+				<blockquote>
+  <p>在双十一之后结束了实习生活又可以开始划水学习下技术了。</p>
+</blockquote>
 
-<p>我当时就发现这个ip我不认识啊，而且这个明显是cron的定时脚本，我心想不会是我开发的时候不小心把一些什么奇奇怪怪的东西写到redis里了吧。但是我的项目缓存没有持久的，这个TTL:-1让我觉得十分奇怪。</p>
+<p>在阿里实习期间发现大公司对于线上代码运行的质量把握很牢，配有大量的监控措施。以至于在双十一期间能立刻响应问题。但是公司内部都是必源的中间件，想要在开源环境下也做到对线上流量的实时监控就不容易，得需要找一些资料内容。</p>
 
-<p>抱着好奇，我把这个ip查一了一下 是加拿大的服务器。</p>
+<hr />
 
-<p><img src="/img/in-post/2018/Redis-Attack/ip.jpg" alt="" /></p>
-<center>百度结果</center>
+<h2 id="elk">ELK</h2>
+<blockquote>
+  <p>ELK ELK是三个开源软件的缩写,分别表示:Elasticsearch , Logstash, Kibana</p>
+</blockquote>
 
-<p>我心想我一个阿里云的学生服务器，我也没往墙外走过，这个肯定不是我主动造成。接着我尝试直接访问这个地址，看到的结果令我大吃一惊。</p>
+<p>线上流量的监控一种比较常见的方法，就是对日志进行采集监控。在网上搜罗了一圈，找到了 <strong>ELK</strong> 来做日志的解析。
+首先先去阿里云上购买一台学生机(政治争取!) 之后先配上环境。</p>
 
-<p><img src="/img/in-post/2018/Redis-Attack/db.jpg" alt="" /></p>
-<center>db.php</center>
-<p>这是shell脚本啊，我被攻击了。</p>
+<h3 id="1-配置环境">1. 配置环境</h3>
+<p>配置 Java, Mysql, Redis</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 先更新apt-get
+sudo apt-get update
 
-<p>一直听闻网络黑客神乎其神，但是长在红旗下的我还真没怎么一对一遇到过黑客攻击，这一波我要仔细瞅瞅。问了一下专攻安全的学弟，才知道这个黑客的手段。</p>
 
-<p>大概攻击手段如下</p>
+## Java 环境安装
+# 安装一波 jdk
+sudo apt-get install openjdk-8-jdk
+# 校验下
+java -version
 
-<p>由于弱口令进入redis
-本地生成公私钥文件，把公钥文件通过redis &gt;config set 注到我的服务器中
-通过本地私钥 ssh –i id_rsa root@xxx.xxx.xx.xx 直接获取服务器
-不重视网络安全，活该被攻击，还好这台服务器只是我测试用的，最后解决办法，找到这段rsa删除，redis密码加强。仔细分析代码还被执行了”sr0.db”脚本，有可能是后门脚本。以后只能悠着点了。</p>
 
-<p><img src="/img/in-post/2018/Redis-Attack/bqb.jpg" alt="" />
-技术参考：</p>
+## Mysql 安装配置 (记得在阿里云控制台开放 对应端口)
+# 安装一波 mysql 注意需要配置root密码
+sudo apt-get install mysql-server
+# 校验下端口是否正常能监听
+sudo netstat -tap | grep mysql
+# 修改可连接的ip (文件路径不一定一样)
+# 找到 bind-address = 127.0.0.1 注释掉或者改为指定的ip 保存后重启服务器
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
+# 重启mysql服务
+sudo service mysql restart
+# 还需要在数据表内设置用户对外开发
+mysql -u 用户名 -p
+Enter password:
+mysql&gt; GRANT ALL PRIVILEGES ON *.* TO '用户名'@'%' IDENTIFIED BY '密码' WITH GRANT OPTION;
+*.* -- 表示哪个库的哪个表
+%   -- 表示允许哪个ip访问
+mysql&gt; flush privileges; 
+# 完成之后可以尝试用本地workbench连接
 
-<p><a href="http://blog.knownsec.com/2015/11/analysis-of-redis-unauthorized-of-expolit/">Redis 未授权访问配合 SSH key 文件利用分析</a></p>
+
+## Redis 安装配置
+# 安装一波 Redis
+sudo apt-get install redis-server
+# check redis进程是否正常
+sudo ps -aux|grep redis
+# 修改可连接的ip (文件路径不一定一样)
+# 找到 bind-address = 127.0.0.1 注释掉或者改为指定的ip 保存后重启服务器
+# 找到 requirepass 解除注释并设置密码
+vim /etc/redis/redis.conf
+# 重启redis
+sudo service redis restart
+</code></pre></div></div>
+<h3 id="2-安装elk">2. 安装ELK</h3>
+
+<h4 id="21-安装elasticsearch">2.1 安装Elasticsearch</h4>
+<blockquote>
+  <p><a href="https://www.elastic.co/cn/downloads/elasticsearch">[安装地址](https://www.elastic.co/cn/downloads/elasticsearch)</a></p>
+</blockquote>
+
+<p>找到下载地址</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># [url]是下载地址， -b 表示后端下载 -c支持断点续传
+wget [url] -bc
+
+# 下载完毕后 解压到对应文件夹
+tar -zxf elasticsearch-6.5.1.tar.gz -C /home/elk
+
+# 由于Elasticsearch 不允许root用户允许(由于Elasticsearch 允许输入shell 存在安全问题)
+# 创建一个专门用于允许Elasticsearch的账户
+useradd es
+# 将对于文件夹的权限赋予该账户
+chown -R es:es  /home/elk/elasticsearch
+# 修改绑定访问ip(可以改成内网ip)
+vim /config/elasticsearch.yml
+network.host: 0.0.0.0
+
+# 修改服务器内核 network配置
+1. 端口释放时间
+sysctl -w net.ipv4.tcp_fin_timeout=30
+2. 开启对于TCP时间戳的支持
+sysctl -w net.ipv4.tcp_timestamps=1
+3. 开启TCP连接中TIME-WAIT sockets的快速回收
+sysctl -w net.ipv4.tcp_tw_recycle=1
+
+# 虚拟内存不足，修改/etc/sysctl.conf 添加 vm.max_map_count=262144，然后重启机器
+vim /etc/sysctl.conf
+# 最大文件描述符 修改/etc/security/limits.conf 添加 * - nofile 65536
+vim /etc/security/limits.conf
+
+# jvm.options 修改jvm虚拟内存
+vim config/jvm.options
+
+# 完事切过去
+su es
+# 执行es -d 后台执行
+./bin/elasticsearch -d
+
+此时访问9200端口会有东西返回
+</code></pre></div></div>
+
+<h4 id="22-安装filebeat">2.2 安装Filebeat</h4>
+<blockquote>
+  <p>由于性能问题，Filebeat性能更优，而且现在Elasticsearch已经支持直接读取Filebeat<br />
+<a href="https://www.elastic.co/downloads/beats/filebeat">[安装地址](https://www.elastic.co/downloads/beats/filebeat)</a></p>
+</blockquote>
+
+<p>找到下载地址</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># [url]是下载地址， -b 表示后端下载 -c支持断点续传
+wget [url] -bc
+
+# 下载完毕后 解压到对应文件夹
+tar -zxf filebeat-6.5.1-linux-x86_64.tar.gz -C /home/elk
+
+#验证是否安装正确
+bin/logstash -e 'input { stdin {} } output { stdout {} }'
+
+# 然后输入 hello world 有点东西
+</code></pre></div></div>
+
+<h4 id="23-安装kibana">2.3 安装Kibana</h4>
+<blockquote>
+  <p><a href="https://www.elastic.co/downloads/kibana">[安装地址](https://www.elastic.co/downloads/kibana)</a></p>
+</blockquote>
+
+<p>找到下载地址</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># [url]是下载地址， -b 表示后端下载 -c支持断点续传
+wget [url] -bc
+
+# 下载完毕后 解压到对应文件夹
+tar -zxf kibana-6.5.1-linux-x86_64.tar.gz -C /home/elk
+
+# 修改config/kibaba.yml server.host: "0.0.0.0",看了下还可以添加用户名密码访问
+vim config/kibaba.yml
+
+# 验证是否安装正确
+./bin/kibana
+# 后台运行
+nohup ./bin/kibana &amp;
+
+# 然后访问5601端口(记得阿里云上配置开放端口)
+</code></pre></div></div>
+
+<h2 id="配置解析日志-待验证">配置解析日志 (待验证)</h2>
+
+<p>bin/logstash -f logstash.conf</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>input {
+# 以文件作为来源
+    file {
+    # 日志文件路径
+        path =&gt; "xxx/xx.log"
+    }
+}
+filter {
+    #定义数据的格式，正则解析日志（根据实际需要对日志日志过滤、收集）
+    grok {
+        match =&gt; { "message" =&gt; "%{IPV4:clientIP}|%{GREEDYDATA:request}|%{NUMBER:duration}"}
+    }
+    #根据需要对数据的类型转换
+    mutate { convert =&gt; { "duration" =&gt; "integer" }}
+}
+    # 定义输出
+output {
+    elasticsearch {
+        #Elasticsearch 默认端口
+        hosts =&gt; ["localhost:9200"] 
+    }
+}　　
+</code></pre></div></div>
 
 
                 <hr>
@@ -213,17 +355,15 @@
                 </style>
 <!--                 <div class="ds-share"
                     style="text-align: right"
-                    data-thread-key="/2018/03/05/Redis-Attack"
-                    data-title="一次Redis被攻击的体验"
-                    data-url="http://localhost:4000/Outside-man.github.io/2018/03/05/Redis-Attack/"
-                    data-images="http://localhost:4000/Outside-man.github.io/img/in-post/2018/Redis-Attack/bg.jpg"
-                    data-content="今天本来高高兴兴地在开发项目，当我打开redis远程管理的时候突然发现，数据库中多了两条奇怪的数据。
+                    data-thread-key="/2018/11/23/logstash"
+                    data-title="配置线上监控"
+                    data-url="http://localhost:4000/Outside-man.github.io/2018/11/23/logstash/"
+                    data-images="http://localhost:4000/Outside-man.github.io/img/home-bg.jpeg"
+                    data-content="
+  在双十一之后结束了实习生活又可以开始划水学习下技术了。
 
-n1
 
-n2
-
-我当时就发现这个ip我不认识啊，而... | 珵玉的博客 " >
+在阿里实习期间发现大公司对于线上代码运行的质量把握很牢，配有大量的监控措施。以至于在双十... | 珵玉的博客 " >
                     <div class="ds-share-inline">
                       <ul  class="ds-share-icons-16">
                         <li data-toggle="ds-share-icons-more"><a class="ds-more" href="#">分享到：</a></li>
@@ -243,13 +383,9 @@ n2
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/Outside-man.github.io/2018/01/02/The-Ex-file/" data-toggle="tooltip" data-placement="top" title="有些人错过了，就是一辈子">&larr; Previous Post</a>
+                        <a href="/Outside-man.github.io/2018/05/25/entry-Alibaba/" data-toggle="tooltip" data-placement="top" title="阿里入职">&larr; Previous Post</a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/Outside-man.github.io/2018/03/14/Hawking/" data-toggle="tooltip" data-placement="top" title="为何要仰望星空">Next Post &rarr;</a>
-                    </li>
                     
                 </ul>
 
